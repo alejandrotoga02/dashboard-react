@@ -17,11 +17,12 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import { mainListItems } from "./listItems";
 import Deposits from "./Deposits";
-import Orders from "./Orders";
+import BarChart from "./charts/BarChart";
+import LineChart from "./charts/LineChart";
 
-function Copyright() {
+const Copyright = () => {
   // classes created because it is needed in the footer.
   const classes = useStyles();
   return (
@@ -36,7 +37,7 @@ function Copyright() {
       </Typography>
     </Container>
   );
-}
+};
 
 const drawerWidth = 240;
 
@@ -118,7 +119,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   fixedHeight: {
-    height: 240
+    height: 340
   },
   // added the footer class
   footer: {
@@ -130,7 +131,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Dashboard() {
+const Dashboard = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -191,29 +192,29 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                {/* <Chart /> */}
-              </Paper>
-            </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <Deposits />
               </Paper>
             </Grid>
+            {/* Chart */}
+            <Grid item xs={12} md={8} lg={6}>
+              <Paper className={fixedHeightPaper}>
+                {/* <Chart /> */}
+                <BarChart />
+              </Paper>
+            </Grid>
+
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+              <LineChart />
               </Paper>
             </Grid>
           </Grid>
@@ -222,4 +223,7 @@ export default function Dashboard() {
       </main>
     </div>
   );
-}
+};
+
+export default Dashboard;
+
