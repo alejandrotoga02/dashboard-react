@@ -58,6 +58,7 @@ const Dashboard = () => {
           month: month,
         })
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch]
   );
 
@@ -76,6 +77,7 @@ const Dashboard = () => {
               <MenuItem value={2021}>2021</MenuItem>
               <MenuItem value={2020}>2020</MenuItem>
               <MenuItem value={2019}>2019</MenuItem>
+              <MenuItem value={2018}>2018</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -108,7 +110,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} md={8} lg={6}>
           <Paper className={fixedHeightPaper}>
-            <ByMunicipalityChart />
+            <ByMunicipalityChart month={month} year={year} />
           </Paper>
         </Grid>
 

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { keys, values } from "ramda";
-import { useDispatch } from "react-redux";
-import { fetchDashboard } from "../reducers/dashboardReducer";
 
 const initialStruct = {
   series: [
@@ -64,9 +62,8 @@ const initialStruct = {
   },
 };
 
-const useBarChart = (accumulated, titleProps) => {
+const useBarChart = (accumulated, titleProps, customEvents = {}) => {
   const [struct, setStruct] = useState(initialStruct);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setStruct((state) => ({
@@ -81,16 +78,7 @@ const useBarChart = (accumulated, titleProps) => {
         ...state.options,
         chart: {
           ...state.options.chart,
-          events: {
-            dataPointSelection: function (_event, _chartContext, config) {
-              console.log(config);
-              dispatch(
-                fetchDashboard({
-                  month: 3,
-                })
-              );
-            },
-          },
+          events: customEvents
         },
         title: titleProps,
         xaxis: {
