@@ -4,8 +4,8 @@ import { keys, values } from "ramda";
 const initialStruct = {
   series: [
     {
-      name: "Deitos",
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      name: "Delitos",
+      data: [],
     },
   ],
   options: {
@@ -29,7 +29,7 @@ const initialStruct = {
     },
     title: {
       text: "",
-      align: "left"
+      align: "left",
     },
     stroke: {
       width: 2,
@@ -73,16 +73,6 @@ export const useBarChart = (accumulated, titleProps) => {
   useEffect(() => {
     setStruct((state) => ({
       ...state,
-      options: {
-        ...state.options,
-        title: titleProps
-      }
-    }));
-  }, [titleProps])
-
-  useEffect(() => {
-    setStruct((state) => ({
-      ...state,
       series: [
         {
           ...state.series[0],
@@ -91,13 +81,15 @@ export const useBarChart = (accumulated, titleProps) => {
       ],
       options: {
         ...state.options,
+        title: titleProps,
         xaxis: {
           ...state.options.xaxis,
           categories: keys(accumulated),
         },
       },
     }));
-  }, [accumulated]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return struct;
 };

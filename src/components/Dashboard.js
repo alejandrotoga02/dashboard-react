@@ -1,85 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Link from "@material-ui/core/Link";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems } from "./listItems";
 import General from "./General";
 import ByMunicipalityChart from "./charts/ByMunicipalityChart";
 import LineChart from "./charts/LineChart";
 import ByYearChart from "./charts/ByYearChart";
 import ByMonthDifferentYear from "./charts/ByMonthDifferentYear";
-
-const Copyright = () => {
-  // classes created because it is needed in the footer.
-  const classes = useStyles();
-  return (
-    <Container className={classes.footer}>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    </Container>
-  );
-};
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDashboard } from "./../common/reducers/dashboardReducer";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   toolbar: {
-    paddingRight: 24 // keep right padding when drawer closed
+    paddingRight: 24, // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
     padding: "0 8px",
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 36,
   },
   menuButtonHidden: {
-    display: "none"
+    display: "none",
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   drawerPaper: {
     position: "relative",
@@ -87,19 +57,19 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerPaperClose: {
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9)
-    }
+      width: theme.spacing(9),
+    },
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -108,20 +78,20 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     flexGrow: 1,
     height: "100vh",
-    overflow: "auto"
+    overflow: "auto",
   },
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
   },
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   fixedHeight: {
-    height: 340
+    height: 340,
   },
   // added the footer class
   footer: {
@@ -129,117 +99,63 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
     backgroundColor: "white",
     // just this item, push to bottom
-    alignSelf: "flex-end"
-  }
+    alignSelf: "flex-end",
+  },
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const { dashboardLoading } = useSelector((state) => state.dashboard);
+
+  const dispatch = useDispatch();
+
+  useEffect(
+    () =>
+      dispatch(
+        fetchDashboard({
+          month: 3,
+        })
+      ),
+    [dispatch]
+  );
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(
-              classes.menuButton,
-              open && classes.menuButtonHidden
-            )}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            Dashboard
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* General */}
-            <Grid item xs={12} md={4} lg={6}>
-              <Paper className={fixedHeightPaper}>
-                <General />
-              </Paper>
-            </Grid>
-            {/* Municipality Chart */}
-            <Grid item xs={12} md={8} lg={6}>
-              <Paper className={fixedHeightPaper}>
-                {/* <Chart /> */}
-                <ByMunicipalityChart />
-              </Paper>
-            </Grid>
+    !dashboardLoading && (
+      <Grid container spacing={3}>
+        {/* General */}
+        <Grid item xs={12} md={4} lg={6}>
+          <Paper className={fixedHeightPaper}>
+            <General />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={8} lg={6}>
+          <Paper className={fixedHeightPaper}>
+            <ByMunicipalityChart />
+          </Paper>
+        </Grid>
 
-            <Grid item xs={12} md={8} lg={6}>
-              <Paper className={fixedHeightPaper}>
-                {/* <ByYearChart /> */}
-                <ByYearChart />
-              </Paper>
-            </Grid>
+        <Grid item xs={12} md={8} lg={6}>
+          <Paper className={fixedHeightPaper}>
+            <ByYearChart />
+          </Paper>
+        </Grid>
 
-            <Grid item xs={12} md={8} lg={6}>
-              <Paper className={fixedHeightPaper}>
-                {/* <Chart /> */}
-                <ByMonthDifferentYear />
-              </Paper>
-            </Grid>
+        <Grid item xs={12} md={8} lg={6}>
+          <Paper className={fixedHeightPaper}>
+            <ByMonthDifferentYear />
+          </Paper>
+        </Grid>
 
-            {/* Line Chart */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-              <LineChart />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
-        <Copyright />
-      </main>
-    </div>
+        {/* Line Chart */}
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <LineChart />
+          </Paper>
+        </Grid>
+      </Grid>
+    )
   );
 };
 
 export default Dashboard;
-
