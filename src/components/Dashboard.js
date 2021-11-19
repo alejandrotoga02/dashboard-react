@@ -19,8 +19,10 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems } from "./listItems";
 import General from "./General";
-import BarChart from "./charts/BarChart";
+import ByMunicipalityChart from "./charts/ByMunicipalityChart";
 import LineChart from "./charts/LineChart";
+import ByYearChart from "./charts/ByYearChart";
+import ByMonthDifferentYear from "./charts/ByMonthDifferentYear";
 
 const Copyright = () => {
   // classes created because it is needed in the footer.
@@ -197,21 +199,35 @@ const Dashboard = () => {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Recent General */}
+            {/* General */}
             <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <General />
               </Paper>
             </Grid>
-            {/* Chart */}
+            {/* Municipality Chart */}
             <Grid item xs={12} md={8} lg={6}>
               <Paper className={fixedHeightPaper}>
                 {/* <Chart /> */}
-                <BarChart />
+                <ByMunicipalityChart />
               </Paper>
             </Grid>
 
-            {/* Recent Orders */}
+            <Grid item xs={12} md={8} lg={6}>
+              <Paper className={fixedHeightPaper}>
+                {/* <ByYearChart /> */}
+                <ByYearChart />
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={8} lg={6}>
+              <Paper className={fixedHeightPaper}>
+                {/* <Chart /> */}
+                <ByMonthDifferentYear />
+              </Paper>
+            </Grid>
+
+            {/* Line Chart */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
               <LineChart />

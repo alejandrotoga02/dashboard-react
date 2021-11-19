@@ -8,7 +8,7 @@ const selectAccumulatedByMunicipality = createSelector(
   (dashboard) => dashboard.entities.accumulatedByMunicipality
 );
 
-const BarChart = () => {
+const ByMunicipalityChart = () => {
   const accumulatedByMunicipality = useSelector(
     selectAccumulatedByMunicipality
   );
@@ -26,4 +26,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default ByMunicipalityChart;
