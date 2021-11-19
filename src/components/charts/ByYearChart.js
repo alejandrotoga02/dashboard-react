@@ -9,12 +9,10 @@ const selectAccumulatedCrimesByYear = createSelector(
 );
 
 const ByYearChart = () => {
-  const accumulatedCrimesByYear = useSelector(
-    selectAccumulatedCrimesByYear
-  );
+  const accumulatedCrimesByYear = useSelector(selectAccumulatedCrimesByYear);
   const state = useBarChart(accumulatedCrimesByYear, {
     text: "Acumulado por año",
-    align: "left"
+    align: "left",
   });
 
   return (
