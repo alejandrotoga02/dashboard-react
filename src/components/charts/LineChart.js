@@ -1,60 +1,25 @@
-import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import useLineBar from "../../common/hooks/useLineBar";
+
+const selectAccumulatedCrimesYearByEachMonth = createSelector(
+  (state) => state.dashboard,
+  (dashboard) => dashboard.entities.accumulatedCrimesYearByEachMonth
+);
 
 const LineChart = () => {
-  const [state] = useState({
-    series: [
-      {
-        name: "Desktops",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-      }
-    ],
-    options: {
-      chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-      title: {
-        text: "Product Trends by Month",
-        align: "left"
-      },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5
-        }
-      },
-      xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep"
-        ]
-      }
-    }
-  });
+  const accumulatedCrimesYearByEachMonth = useSelector(
+    selectAccumulatedCrimesYearByEachMonth
+  );
+  const state = useLineBar(accumulatedCrimesYearByEachMonth);
 
   return (
     <div id="chart2">
       <ReactApexChart
         options={state.options}
         series={state.series}
-        type="line"
+        type="area"
         height={250}
       />
     </div>

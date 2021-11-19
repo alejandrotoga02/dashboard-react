@@ -58,7 +58,7 @@ const General = () => {
         </Grid>
 
         <Grid item className={classes.title}>
-          <Title>Mes anterior</Title>
+          <Title>Año ant.</Title>
 
           <Typography component="p" variant="h3">
             {totalCrimesCurrentMonthLastYear}

@@ -67,7 +67,7 @@ const initialStruct = {
   },
 };
 
-export const useBarChart = (accumulated, titleProps) => {
+const useBarChart = (accumulated, titleProps) => {
   const [struct, setStruct] = useState(initialStruct);
 
   useEffect(() => {
@@ -93,3 +93,5 @@ export const useBarChart = (accumulated, titleProps) => {
 
   return struct;
 };
+
+export default useBarChart;

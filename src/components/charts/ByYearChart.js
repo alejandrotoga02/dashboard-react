@@ -1,7 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { useBarChart } from "../../common/hooks/useBarChart";
+import useBarChart from "../../common/hooks/useBarChart";
 
 const selectAccumulatedCrimesByYear = createSelector(
   (state) => state.dashboard,
