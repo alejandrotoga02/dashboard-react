@@ -1,8 +1,19 @@
 import ReactApexChart from "react-apexcharts";
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
 import { useBarChart } from "../../common/hooks/useBarChart";
 
+const selectAccumulatedByMunicipality = createSelector(
+  (state) => state.dashboard,
+  (dashboard) => dashboard.entities.accumulatedByMunicipality
+);
+
 const BarChart = () => {
-  const state = useBarChart()
+  const accumulatedByMunicipality = useSelector(
+    selectAccumulatedByMunicipality
+  );
+  const state = useBarChart(accumulatedByMunicipality);
+
   return (
     <div id="chart">
       <ReactApexChart

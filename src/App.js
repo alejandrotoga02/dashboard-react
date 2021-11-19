@@ -8,7 +8,9 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchDashboard()), [dispatch]);
+  useEffect(() => dispatch(fetchDashboard({
+    month: 3
+  })), [dispatch]);
 
   return !dashboardLoading && <Dashboard />;
 };

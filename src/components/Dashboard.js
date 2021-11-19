@@ -18,7 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems } from "./listItems";
-import Deposits from "./Deposits";
+import General from "./General";
 import BarChart from "./charts/BarChart";
 import LineChart from "./charts/LineChart";
 
@@ -197,10 +197,10 @@ const Dashboard = () => {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Recent Deposits */}
+            {/* Recent General */}
             <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <General />
               </Paper>
             </Grid>
             {/* Chart */}
