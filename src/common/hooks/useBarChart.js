@@ -27,6 +27,10 @@ const initialStruct = {
     dataLabels: {
       enabled: false,
     },
+    title: {
+      text: "",
+      align: "left"
+    },
     stroke: {
       width: 2,
     },
@@ -63,8 +67,18 @@ const initialStruct = {
   },
 };
 
-export const useBarChart = (accumulated) => {
+export const useBarChart = (accumulated, titleProps) => {
   const [struct, setStruct] = useState(initialStruct);
+
+  useEffect(() => {
+    setStruct((state) => ({
+      ...state,
+      options: {
+        ...state.options,
+        title: titleProps
+      }
+    }));
+  }, [titleProps])
 
   useEffect(() => {
     setStruct((state) => ({

@@ -12,7 +12,10 @@ const ByMonthDifferentYear = () => {
   const accumulatedCrimesByCurrentMonthDifferentYear = useSelector(
     selectAccumulatedCrimesByCurrentMonthDifferentYear
   );
-  const state = useBarChart(accumulatedCrimesByCurrentMonthDifferentYear);
+  const state = useBarChart(accumulatedCrimesByCurrentMonthDifferentYear, {
+    text: "Delitos para el mismo mes de cada año",
+    align: "left",
+  });
 
   return (
     <div id="chart">

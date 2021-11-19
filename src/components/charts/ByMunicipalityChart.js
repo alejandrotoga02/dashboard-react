@@ -12,7 +12,10 @@ const ByMunicipalityChart = () => {
   const accumulatedByMunicipality = useSelector(
     selectAccumulatedByMunicipality
   );
-  const state = useBarChart(accumulatedByMunicipality);
+  const state = useBarChart(accumulatedByMunicipality, {
+    text: "Distribución por municipio",
+    align: "left"
+  });
 
   return (
     <div id="chart">
