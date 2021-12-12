@@ -5,6 +5,9 @@ import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "./../common/reducers/dashboardReducer";
 import { Card, CardContent, styled, Typography } from "@material-ui/core";
+import LineChart from "./statics/LineChart";
+import BarChart from "./statics/BarChart";
+import DonutChart from "./statics/DonutChart";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -203,6 +206,17 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
+
+          <Grid item lg={3}>
+            <Paper className={classes.paper}>
+              <BarChart />
+            </Paper>
+          </Grid>
+          <Grid item lg={3}>
+            <Paper className={classes.paper}>
+              <BarChart />
+            </Paper>
+          </Grid>
         </Grid>
 
         {/* secod section grays */}
@@ -299,6 +313,12 @@ const Dashboard = () => {
                 </Typography>
               </CardContent>
             </Card>
+          </Grid>
+
+          <Grid item lg={6}>
+            <Paper className={classes.paper}>
+              <LineChart />
+            </Paper>
           </Grid>
         </Grid>
 
@@ -518,6 +538,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
+
           <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
             <Card className={classes.cardNoLine}>
               <CardContent>
@@ -536,6 +557,22 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
+
+          <Grid item lg={3}>
+            <Paper className={classes.paper}>
+              <DonutChart />
+            </Paper>
+          </Grid>
+          <Grid item lg={3}>
+            <Paper className={classes.paper}>
+              <DonutChart />
+            </Paper>
+          </Grid>
+          {/* <Grid item lg={2}>
+            <Paper className={classes.paper}>
+              <DonutChart />
+            </Paper>
+          </Grid> */}
         </Grid>
       </>
     )
