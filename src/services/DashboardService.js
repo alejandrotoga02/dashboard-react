@@ -1,6 +1,11 @@
 import axios from "axios";
 
-export const getDashboard = async params => {
-  const data = await axios.get("/dashboard", { params });
+export const getStatistics = async (_params) => {
+  const data = await axios.get("/statistics");
+  return data;
+};
+
+export const getGraphs = async (_params) => {
+  const data = await axios.get("/statistics/graphics");
   return data;
 };

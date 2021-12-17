@@ -1,12 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDashboard } from "../../services/DashboardService";
+import { getGraphs, getStatistics } from "../../services/DashboardService";
 
 // First, create the thunk
 export const fetchDashboard = createAsyncThunk(
   "dashboard/fetch",
   async (params = {}) => {
-    const response = await getDashboard(params);
-    return response.data;
+    const { data: dataOne} = await getStatistics(params);
+    const { data: dataTwo } = await getGraphs(params);
+    const response = {
+      ...dataOne,
+      ...dataTwo
+    }
+    return response;
   }
 );
 
