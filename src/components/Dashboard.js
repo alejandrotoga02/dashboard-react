@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -14,65 +14,85 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: "white",
-  backgroundColor: "#002600"
+  backgroundColor: "#002600",
 }));
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   logoRight: {
     paddingTop: 20,
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   title: {
     fontWeight: "normal",
     fontSize: "1.4em",
-    marginBottom: 0
+    marginBottom: 0,
   },
   subTitle: {
     fontWeight: "normal",
     fontSize: "1em",
-    marginBottom: 0
+    marginBottom: 0,
   },
   card: {
     height: 200,
     border: "none",
-    boxShadow: "none"
+    boxShadow: "none",
   },
   cardNoLine: {
     border: "none",
-    boxShadow: "none"
+    boxShadow: "none",
   },
   cardTitle: {
     height: 70,
     border: "none",
-    boxShadow: "none"
+    boxShadow: "none",
   },
   itemLg: {
-    maxWidth: "16%"
-  }
+    maxWidth: "16%",
+  },
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
-  // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const { dashboardLoading } = useSelector(state => state.dashboard);
+  const { dashboardLoading, entities } = useSelector(
+    (state) => state.dashboard
+  );
   const dispatch = useDispatch();
-  const [year, setYear] = useState("2021");
-  const [month, setMonth] = useState("03");
+
+  const {
+    totalAccessNP,
+    totalAccessPC,
+    totalAccessPV,
+    totalAccessPersonal,
+    totalAccessPersonalB1,
+    totalAccessPersonalB2,
+    totalAccessPersonalB3,
+    totalAccessPersonalCEP,
+    totalAccessPersonalFL,
+    totalAccessPersonalGP,
+    totalAccessPersonalMO,
+    totalAccessPersonalNE,
+    totalAccessPersonalRO,
+    totalAccessPersonalSP,
+    totalAccessTR,
+    totalAccessVehicles,
+    totalAccessVehiclesNL,
+    totalAccessVehiclesRO,
+    totalAccessVehiclesSP
+  } = entities;
+
+  useEffect(() => {
+    console.log(entities);
+  }, [entities]);
 
   useEffect(
-    () =>
-      dispatch(
-        fetchDashboard({
-          month: month
-        })
-      ),
+    () => dispatch(fetchDashboard()),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch]
   );
@@ -140,7 +160,7 @@ const Dashboard = () => {
                     Pez Vela
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    219,513
+                    { totalAccessPV.toLocaleString() }
                   </Typography>
                 </Grid>
 
@@ -153,7 +173,7 @@ const Dashboard = () => {
                     Norte Pesados
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    15,513
+                  { totalAccessNP.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -169,7 +189,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  28,513
+                  { totalAccessPC.toLocaleString() }
                 </Typography>
               </CardContent>
 
@@ -178,7 +198,7 @@ const Dashboard = () => {
                   Tamo 15
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  14,176
+                  { totalAccessTR.toLocaleString() }
                 </Typography>
               </CardContent>
             </Card>
@@ -192,7 +212,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  Promedio diario 2898
+                  Promedio diario ###
                 </Typography>
               </CardContent>
 
@@ -245,7 +265,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  28,513
+                  { totalAccessVehicles.toLocaleString() }
                 </Typography>
               </CardContent>
             </Card>
@@ -260,10 +280,10 @@ const Dashboard = () => {
                   style={{
                     color: "#004C00",
                     fontSize: "1em",
-                    lineHeight: "normal"
+                    lineHeight: "normal",
                   }}
                 >
-                  Promedio diario 862
+                  Promedio diario ###
                 </Typography>
               </CardContent>
             </Card>
@@ -283,7 +303,7 @@ const Dashboard = () => {
                     San Pedrito
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessVehiclesSP.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -297,7 +317,7 @@ const Dashboard = () => {
                   Norte Ligeros
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  17,513
+                { totalAccessVehiclesNL.toLocaleString() }
                 </Typography>
               </CardContent>
             </Card>
@@ -309,7 +329,7 @@ const Dashboard = () => {
                   Muelle Pesquero
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  0
+                { totalAccessVehiclesRO.toLocaleString() }
                 </Typography>
               </CardContent>
             </Card>
@@ -322,7 +342,7 @@ const Dashboard = () => {
           </Grid>
         </Grid>
 
-        {/* secod section grays */}
+        {/* third section grays */}
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.cardTitle}>
@@ -348,7 +368,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  248,513
+                  { totalAccessPersonal.toLocaleString() }
                 </Typography>
               </CardContent>
             </Card>
@@ -363,10 +383,10 @@ const Dashboard = () => {
                   style={{
                     color: "#004C00",
                     fontSize: "1em",
-                    lineHeight: "normal"
+                    lineHeight: "normal",
                   }}
                 >
-                  Promedio diario 862
+                  Promedio diario {/* ### */}
                 </Typography>
               </CardContent>
             </Card>
@@ -386,7 +406,7 @@ const Dashboard = () => {
                     San Pedrito
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalSP.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -401,10 +421,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    La flechita
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalFL.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -419,10 +439,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Norte Elevado
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalNE.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -437,10 +457,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Gestiones Portuarios
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalGP.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -455,10 +475,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Muelle Pesquero
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalRO.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -475,10 +495,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Base 1
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalB1.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -493,10 +513,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Base 2
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalB2.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -511,10 +531,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Base 3
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalB3.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -529,10 +549,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    Módulo 8
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalMO.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
@@ -548,10 +568,10 @@ const Dashboard = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    San Pedrito
+                    CEP.
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    219,513
+                  { totalAccessPersonalCEP.toLocaleString() }
                   </Typography>
                 </Grid>
               </CardContent>
