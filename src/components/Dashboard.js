@@ -84,12 +84,8 @@ const Dashboard = () => {
     totalAccessVehicles,
     totalAccessVehiclesNL,
     totalAccessVehiclesRO,
-    totalAccessVehiclesSP
+    totalAccessVehiclesSP,
   } = entities;
-
-  useEffect(() => {
-    console.log(entities);
-  }, [entities]);
 
   useEffect(
     () => dispatch(fetchDashboard()),
@@ -97,8 +93,13 @@ const Dashboard = () => {
     [dispatch]
   );
 
+  useEffect(() => {
+    console.log(entities);
+  }, [entities]);
+
   return (
-    !dashboardLoading && (
+    !dashboardLoading &&
+    entities && (
       <>
         <Grid container spacing={2}>
           <Grid item xs={4} md={4} lg={3}>
@@ -160,7 +161,7 @@ const Dashboard = () => {
                     Pez Vela
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    { totalAccessPV.toLocaleString() }
+                    {totalAccessPV.toLocaleString()}
                   </Typography>
                 </Grid>
 
@@ -173,7 +174,7 @@ const Dashboard = () => {
                     Norte Pesados
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                  { totalAccessNP.toLocaleString() }
+                    {totalAccessNP.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -189,7 +190,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  { totalAccessPC.toLocaleString() }
+                  {totalAccessPC.toLocaleString()}
                 </Typography>
               </CardContent>
 
@@ -198,7 +199,7 @@ const Dashboard = () => {
                   Tamo 15
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  { totalAccessTR.toLocaleString() }
+                  {totalAccessTR.toLocaleString()}
                 </Typography>
               </CardContent>
             </Card>
@@ -265,7 +266,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  { totalAccessVehicles.toLocaleString() }
+                  {totalAccessVehicles.toLocaleString()}
                 </Typography>
               </CardContent>
             </Card>
@@ -303,7 +304,7 @@ const Dashboard = () => {
                     San Pedrito
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                  { totalAccessVehiclesSP.toLocaleString() }
+                    {totalAccessVehiclesSP.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -317,7 +318,7 @@ const Dashboard = () => {
                   Norte Ligeros
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                { totalAccessVehiclesNL.toLocaleString() }
+                  {totalAccessVehiclesNL.toLocaleString()}
                 </Typography>
               </CardContent>
             </Card>
@@ -329,7 +330,7 @@ const Dashboard = () => {
                   Muelle Pesquero
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                { totalAccessVehiclesRO.toLocaleString() }
+                  {totalAccessVehiclesRO.toLocaleString()}
                 </Typography>
               </CardContent>
             </Card>
@@ -368,7 +369,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  { totalAccessPersonal.toLocaleString() }
+                  {totalAccessPersonal.toLocaleString()}
                 </Typography>
               </CardContent>
             </Card>
@@ -386,7 +387,7 @@ const Dashboard = () => {
                     lineHeight: "normal",
                   }}
                 >
-                  Promedio diario {/* ### */}
+                  Promedio diario ###
                 </Typography>
               </CardContent>
             </Card>
@@ -406,7 +407,7 @@ const Dashboard = () => {
                     San Pedrito
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalSP.toLocaleString() }
+                    {totalAccessPersonalSP.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -424,7 +425,7 @@ const Dashboard = () => {
                     La flechita
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalFL.toLocaleString() }
+                    {totalAccessPersonalFL.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -442,7 +443,7 @@ const Dashboard = () => {
                     Norte Elevado
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalNE.toLocaleString() }
+                    {totalAccessPersonalNE.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -460,7 +461,7 @@ const Dashboard = () => {
                     Gestiones Portuarios
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalGP.toLocaleString() }
+                    {totalAccessPersonalGP.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -478,7 +479,7 @@ const Dashboard = () => {
                     Muelle Pesquero
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalRO.toLocaleString() }
+                    {totalAccessPersonalRO.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -498,7 +499,7 @@ const Dashboard = () => {
                     Base 1
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalB1.toLocaleString() }
+                    {totalAccessPersonalB1.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -516,7 +517,7 @@ const Dashboard = () => {
                     Base 2
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalB2.toLocaleString() }
+                    {totalAccessPersonalB2.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -534,7 +535,7 @@ const Dashboard = () => {
                     Base 3
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalB3.toLocaleString() }
+                    {totalAccessPersonalB3.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -552,7 +553,7 @@ const Dashboard = () => {
                     Módulo 8
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalMO.toLocaleString() }
+                    {totalAccessPersonalMO.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -571,7 +572,7 @@ const Dashboard = () => {
                     CEP.
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                  { totalAccessPersonalCEP.toLocaleString() }
+                    {totalAccessPersonalCEP.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -588,11 +589,6 @@ const Dashboard = () => {
               <DonutChart />
             </Paper>
           </Grid>
-          {/* <Grid item lg={2}>
-            <Paper className={classes.paper}>
-              <DonutChart />
-            </Paper>
-          </Grid> */}
         </Grid>
       </>
     )
