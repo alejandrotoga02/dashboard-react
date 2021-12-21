@@ -5,9 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "./../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import DonutChart from "./statics/DonutChart";
 import Logos from "./sections/Logos";
-import { ByDayChart, ByMonthChart, LineChart } from "./charts";
+import { ByDayChart, ByMonthChart, DonutPCChart, DonutTTChart, DonutVChart, LineChart } from "./charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -534,15 +533,22 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
+        </Grid>
 
+        <Grid container spacing={1}>
           <Grid item lg={3}>
             <Paper className={classes.paper}>
-              <DonutChart />
+              <DonutPCChart />
             </Paper>
           </Grid>
           <Grid item lg={3}>
             <Paper className={classes.paper}>
-              <DonutChart />
+              <DonutVChart />
+            </Paper>
+          </Grid>
+          <Grid item lg={3}>
+            <Paper className={classes.paper}>
+              <DonutTTChart />
             </Paper>
           </Grid>
         </Grid>

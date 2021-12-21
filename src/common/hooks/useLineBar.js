@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { forEachObjIndexed, keys, values } from "ramda";
+import { keys, values } from "ramda";
 const initialStruct = {
   series: [
     {
@@ -25,7 +25,7 @@ const initialStruct = {
       enabled: false
     },
     markers: {
-      size: 2,
+      size: 2
     },
     title: {
       text: "Accesos promedio de Autotransporte de carga por hora del día",
@@ -38,23 +38,7 @@ const initialStruct = {
   }
 };
 
-const months = {
-  Enero: "01",
-  Febrero: "02",
-  Marzo: "03",
-  Abril: "04",
-  Mayo: "05",
-  Junio: "06",
-  Julio: "07",
-  Agosto: "08",
-  Septiembre: "09",
-  Octubre: "10",
-  Noviembre: "11",
-  Diciembre: "12"
-};
-
-export const useLineBar = accumulated => {
-  console.log("here", accumulated);
+export const useLineBar = data => {  
   const [struct, setStruct] = useState(initialStruct);
 
   useEffect(() => {
@@ -63,14 +47,14 @@ export const useLineBar = accumulated => {
       series: [
         {
           ...state.series[0],
-          data: values(accumulated)
+          data: values(data)
         }
       ],
       options: {
         ...state.options,
         xaxis: {
           ...state.options.xaxis,
-          categories: keys(accumulated)
+          categories: keys(data)
         }
       }
     }));
