@@ -4,65 +4,57 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "./../common/reducers/dashboardReducer";
-import { Card, CardContent, styled, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography } from "@material-ui/core";
 import LineChart from "./statics/LineChart";
-import BarChart from "./statics/BarChart";
 import DonutChart from "./statics/DonutChart";
+import Logos from "./sections/Logos";
+import ByDayChart from "./charts/ByDay";
+import ByMonthChart from "./charts/ByMonth";
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: "white",
-  backgroundColor: "#002600",
-}));
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    flexDirection: "column"
   },
   logoRight: {
     paddingTop: 20,
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   title: {
     fontWeight: "normal",
     fontSize: "1.4em",
-    marginBottom: 0,
+    marginBottom: 0
   },
   subTitle: {
     fontWeight: "normal",
     fontSize: "1em",
-    marginBottom: 0,
+    marginBottom: 0
   },
   card: {
     height: 200,
     border: "none",
-    boxShadow: "none",
+    boxShadow: "none"
   },
   cardNoLine: {
     border: "none",
-    boxShadow: "none",
+    boxShadow: "none"
   },
   cardTitle: {
     height: 70,
     border: "none",
-    boxShadow: "none",
+    boxShadow: "none"
   },
   itemLg: {
-    maxWidth: "16%",
-  },
+    maxWidth: "16%"
+  }
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
-  const { dashboardLoading, entities } = useSelector(
-    (state) => state.dashboard
-  );
+  const { dashboardLoading, entities } = useSelector(state => state.dashboard);
   const dispatch = useDispatch();
 
   const {
@@ -84,7 +76,7 @@ const Dashboard = () => {
     totalAccessVehicles,
     totalAccessVehiclesNL,
     totalAccessVehiclesRO,
-    totalAccessVehiclesSP,
+    totalAccessVehiclesSP
   } = entities;
 
   useEffect(
@@ -101,41 +93,7 @@ const Dashboard = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Grid container spacing={2}>
-          <Grid item xs={4} md={4} lg={3}>
-            <img
-              src={`/images/logos-izquierdo.jpg`}
-              style={{ paddingTop: 10 }}
-              width={420}
-              alt={"algo"}
-              loading="lazy"
-            />
-          </Grid>
-          <Grid item xs={4} md={4} lg={7}>
-            <Item>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                style={{ color: "#white" }}
-              >
-                TABLERO DE INFORMACIÓN DE ACCESOS AL PUERTO
-              </Typography>
-              <p className={classes.subTitle}>
-                Administración del Sistema Portuario Nacional Manzanillo
-              </p>
-            </Item>
-          </Grid>
-          <Grid item xs={4} md={4} lg={2} className={classes.logoRight}>
-            <img
-              src={`/images/logo-derecho.jpg`}
-              width={150}
-              alt={"algo"}
-              loading="lazy"
-            />
-          </Grid>
-        </Grid>
-
+        <Logos />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
@@ -230,12 +188,12 @@ const Dashboard = () => {
 
           <Grid item lg={3}>
             <Paper className={classes.paper}>
-              <BarChart />
+              <ByMonthChart />
             </Paper>
           </Grid>
           <Grid item lg={3}>
             <Paper className={classes.paper}>
-              <BarChart />
+              <ByDayChart />
             </Paper>
           </Grid>
         </Grid>
@@ -281,7 +239,7 @@ const Dashboard = () => {
                   style={{
                     color: "#004C00",
                     fontSize: "1em",
-                    lineHeight: "normal",
+                    lineHeight: "normal"
                   }}
                 >
                   Promedio diario ###
@@ -384,7 +342,7 @@ const Dashboard = () => {
                   style={{
                     color: "#004C00",
                     fontSize: "1em",
-                    lineHeight: "normal",
+                    lineHeight: "normal"
                   }}
                 >
                   Promedio diario ###

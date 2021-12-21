@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import useBarChart from "../../common/hooks/useBarChart";
 
-const selectAccumulatedCrimesByYear = createSelector(
-  (state) => state.dashboard,
-  (dashboard) => dashboard.entities.accumulatedCrimesByYear
+const selectBarChartByMonth = createSelector(
+  state => state.dashboard,
+  dashboard => dashboard.entities.barChartByMonth
 );
 
-const ByYearChart = () => {
-  const accumulatedCrimesByYear = useSelector(selectAccumulatedCrimesByYear);
-  const state = useBarChart(accumulatedCrimesByYear, {
-    text: "Acumulado por año",
-    align: "left",
+const ByMonthChart = () => {
+  const barChartByMonth = useSelector(selectBarChartByMonth);
+  const state = useBarChart(barChartByMonth, "Accesos", {
+    text: "Accesos por mes",
+    align: "left"
   });
 
   return (
@@ -27,4 +27,4 @@ const ByYearChart = () => {
   );
 };
 
-export default ByYearChart;
+export default ByMonthChart;

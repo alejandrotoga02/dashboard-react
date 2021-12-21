@@ -4,7 +4,8 @@ WORKDIR /app
 COPY . /app
 USER root
 
-RUN chmod -R ug+rwx /app && npm i && npm run build
+RUN npm install -g yarn
+RUN chmod -R ug+rwx /app && yarn install && yarn build
 
 #------------------------------------------------------------
 FROM registry.access.redhat.com/ubi8/nginx-118

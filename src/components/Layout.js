@@ -64,7 +64,7 @@ const Layout = ({ children }) => {
   return (
     <div className={classes.root}>      
       <main className={classes.content}>        
-        <Container maxWidth="fixed" className={classes.container}>
+        <Container maxWidth={false} className={classes.container}>
           {children}
         </Container>      
       </main>
