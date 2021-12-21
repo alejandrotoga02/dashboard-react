@@ -5,10 +5,9 @@ import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "./../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import LineChart from "./statics/LineChart";
 import DonutChart from "./statics/DonutChart";
 import Logos from "./sections/Logos";
-import { ByDayChart, ByMonthChart } from "./charts"
+import { ByDayChart, ByMonthChart, LineChart } from "./charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {

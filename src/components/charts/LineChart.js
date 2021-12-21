@@ -3,16 +3,14 @@ import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import useLineBar from "../../common/hooks/useLineBar";
 
-const selectAccumulatedCrimesYearByEachMonth = createSelector(
-  (state) => state.dashboard,
-  (dashboard) => dashboard.entities.accumulatedCrimesYearByEachMonth
+const selectLineChartByHour = createSelector(
+  state => state.dashboard,
+  dashboard => dashboard.entities.lineChartByHour
 );
 
 const LineChart = () => {
-  const accumulatedCrimesYearByEachMonth = useSelector(
-    selectAccumulatedCrimesYearByEachMonth
-  );
-  const state = useLineBar(accumulatedCrimesYearByEachMonth);
+  const lineChartByHour = useSelector(selectLineChartByHour);
+  const state = useLineBar(lineChartByHour);
 
   return (
     <div id="chart2">
