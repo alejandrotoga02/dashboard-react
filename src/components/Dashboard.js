@@ -8,8 +8,7 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 import LineChart from "./statics/LineChart";
 import DonutChart from "./statics/DonutChart";
 import Logos from "./sections/Logos";
-import ByDayChart from "./charts/ByDay";
-import ByMonthChart from "./charts/ByMonth";
+import { ByDayChart, ByMonthChart } from "./charts"
 
 const useStyles = makeStyles(theme => ({
   paper: {
