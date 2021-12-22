@@ -11,7 +11,7 @@ const selectDonutV = createSelector(
 const DonutVChart = () => {
   const donutV = useSelector(selectDonutV);
   const state = useDonutChart(donutV,{
-    text: "Accesos de Vehículos ligeras"
+    text: "Accesos de Vehículos ligeros"
   });
 
   return (

@@ -14,7 +14,7 @@ const initialStruct = {
       height: 350,
       zoom: {
         type: "x",
-        enabled: true,
+        enabled: false,
         autoScaleYaxis: true
       },
       toolbar: {

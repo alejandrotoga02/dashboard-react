@@ -16,11 +16,17 @@ const initialStruct = {
     plotOptions: {
       bar: {
         borderRadius: 0,
-        columnWidth: "80%"
+        columnWidth: "80%",
+        dataLabels: {
+          position: "top"
+        }
       }
     },
     dataLabels: {
-      enabled: false
+      enabled: true,
+      formatter: val => {
+        return val;
+      }
     },
     title: {
       text: "",
@@ -44,19 +50,6 @@ const initialStruct = {
     yaxis: {
       title: {
         text: ""
-      }
-    },
-    fill: {
-      type: "solid",
-      gradient: {
-        shade: "light",
-        type: "horizontal",
-        shadeIntensity: 0.25,
-        gradientToColors: undefined,
-        inverseColors: true,
-        opacityFrom: 0.85,
-        opacityTo: 0.85,
-        stops: [50, 0, 100]
       }
     }
   }

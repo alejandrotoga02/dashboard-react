@@ -1,12 +1,18 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "./../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import Logos from "./sections/Logos";
-import { ByDayChart, ByMonthChart, DonutPCChart, DonutTTChart, DonutVChart, LineChart } from "./charts";
+import {
+  ByDayChart,
+  ByMonthChart,
+  DonutPCChart,
+  DonutTTChart,
+  DonutVChart,
+  LineChart
+} from "./charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -184,14 +190,10 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item lg={3}>
-            <Paper className={classes.paper}>
-              <ByMonthChart />
-            </Paper>
+            <ByMonthChart />
           </Grid>
           <Grid item lg={3}>
-            <Paper className={classes.paper}>
-              <ByDayChart />
-            </Paper>
+            <ByDayChart />
           </Grid>
         </Grid>
 
@@ -292,9 +294,7 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item lg={6}>
-            <Paper className={classes.paper}>
-              <LineChart />
-            </Paper>
+            <LineChart />
           </Grid>
         </Grid>
 
@@ -537,19 +537,13 @@ const Dashboard = () => {
 
         <Grid container spacing={1}>
           <Grid item lg={3}>
-            <Paper className={classes.paper}>
-              <DonutPCChart />
-            </Paper>
+            <DonutPCChart />
           </Grid>
           <Grid item lg={3}>
-            <Paper className={classes.paper}>
-              <DonutVChart />
-            </Paper>
+            <DonutVChart />
           </Grid>
           <Grid item lg={3}>
-            <Paper className={classes.paper}>
-              <DonutTTChart />
-            </Paper>
+            <DonutTTChart />
           </Grid>
         </Grid>
       </>
