@@ -91,10 +91,6 @@ const Dashboard = () => {
     [dispatch]
   );
 
-  useEffect(() => {
-    console.log(entities);
-  }, [entities]);
-
   return (
     !dashboardLoading &&
     entities && (

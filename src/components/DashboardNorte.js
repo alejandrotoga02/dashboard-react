@@ -5,14 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import Logos from "./sections/Logos";
-import {
-  ByDayChart,
-  ByMonthChart,
-  DonutPCChart,
-  DonutTTChart,
-  DonutVChart,
-  LineChart
-} from "./charts";
+import { ByDayChart, ByMonthChart, LineChart } from "./charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -37,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 0
   },
   card: {
-    height: 200,
+    maxHeight: 200,
     border: "none",
     boxShadow: "none"
   },
@@ -48,7 +41,8 @@ const useStyles = makeStyles(theme => ({
   cardTitle: {
     height: 70,
     border: "none",
-    boxShadow: "none"
+    boxShadow: "none",
+    textAlign: "center"
   },
   itemLg: {
     maxWidth: "16%"
@@ -61,27 +55,11 @@ const DashboardNorte = () => {
   const dispatch = useDispatch();
 
   const {
-    totalAccessNP,
     totalAccessPC,
-    totalAccessPV,
-    totalAccessTR,
     avgTotalAccessPC,
     totalAccessPersonal,
-    totalAccessPersonalB1,
-    totalAccessPersonalB2,
-    totalAccessPersonalB3,
-    totalAccessPersonalCEP,
-    totalAccessPersonalFL,
-    totalAccessPersonalGP,
-    totalAccessPersonalMO,
-    totalAccessPersonalNE,
-    totalAccessPersonalRO,
-    totalAccessPersonalSP,
     avgTotalAccessPersonal,
     totalAccessVehicles,
-    totalAccessVehiclesNL,
-    totalAccessVehiclesRO,
-    totalAccessVehiclesSP,
     avgTotalAccessVehicles
   } = entities;
 
@@ -96,30 +74,28 @@ const DashboardNorte = () => {
     [dispatch]
   );
 
-  useEffect(() => {
-    console.log(entities);
-  }, [entities]);
-
   return (
     !dashboardLoading &&
     entities && (
       <>
-        <Logos name="Norte" />
+        <Logos name="- ZONA NORTE" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.card}>
-              <CardContent style={{ background: "#D3D3D3" }}>
+            <Card className={classes.cardTitle}>
+              <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
+               
                 <Typography
                   gutterBottom
                   variant="h5"
                   component="div"
-                  style={{ color: "#004C00" }}
+                  style={{ color: "#004C00", fontWeight: "bolder"  }}
                 >
                   Autotransporte de carga
                 </Typography>
+
                 <Typography
-                  variant="h5"
+                  variant="h6"
                   color="div"
                   style={{ color: "#004C00" }}
                 >
@@ -130,11 +106,11 @@ const DashboardNorte = () => {
           </Grid>
 
           <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.card}>
-              <CardContent style={{ background: "#D3D3D3" }}>
+            <Card className={classes.cardTitle}>
+              <CardContent style={{ background: "#D3D3D3", fontWeight: "bolder" }}>
                 <Typography
                   gutterBottom
-                  variant="h5"
+                  variant="h4"
                   component="div"
                   style={{ color: "#004C00" }}
                 >
@@ -143,8 +119,9 @@ const DashboardNorte = () => {
               </CardContent>
             </Card>
           </Grid>
+          
           <Grid item xs={2} md={1} lg={1}>
-            <Card className={classes.card}>
+            <Card className={classes.cardTitle}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   // gutterBottom
@@ -170,14 +147,22 @@ const DashboardNorte = () => {
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
+              <CardContent style={{ background: "#D3D3D3", padding: 0  }}>
                 <Typography
                   gutterBottom
                   variant="h5"
                   component="div"
-                  style={{ color: "#004C00" }}
+                  style={{ color: "#004C00", fontWeight: "bolder" }}
                 >
                   Vehículos utilitarios
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  color="div"
+                  style={{ color: "#004C00" }}
+                >
+                  Nortes Ligeros
                 </Typography>
               </CardContent>
             </Card>
@@ -185,10 +170,10 @@ const DashboardNorte = () => {
 
           <Grid item xs={2} md={2} lg={2}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
+              <CardContent style={{ background: "#D3D3D3", fontWeight: "bolder" }}>
                 <Typography
                   gutterBottom
-                  variant="h5"
+                  variant="h4"
                   component="div"
                   style={{ color: "#004C00" }}
                 >
@@ -226,12 +211,12 @@ const DashboardNorte = () => {
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
+              <CardContent style={{ background: "#D3D3D3",  padding: 0 }}>
                 <Typography
                   gutterBottom
                   variant="h6"
                   component="div"
-                  style={{ color: "#004C00" }}
+                  style={{ color: "#004C00", fontWeight: "bolder" }}
                 >
                   Personal
                 </Typography>
@@ -252,9 +237,9 @@ const DashboardNorte = () => {
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   gutterBottom
-                  variant="h5"
+                  variant="h4"
                   component="div"
-                  style={{ color: "#004C00" }}
+                  style={{ color: "#004C00", fontWeight: "bolder" }}
                 >
                   {totalAccessPersonal.toLocaleString()}
                 </Typography>
