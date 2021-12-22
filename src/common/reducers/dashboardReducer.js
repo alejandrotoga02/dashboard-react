@@ -18,6 +18,7 @@ const initialState = {
     totalAccessPersonalNE: 0,
     totalAccessPersonalRO: 0,
     totalAccessPersonalSP: 0,
+    avgTotalAccessPersonal: 0,
     totalAccessTR: 0,
     totalAccessVehicles: 0,
     avgTotalAccessVehicles: 0,

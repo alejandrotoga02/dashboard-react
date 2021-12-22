@@ -64,6 +64,8 @@ const Dashboard = () => {
     totalAccessNP,
     totalAccessPC,
     totalAccessPV,
+    totalAccessTR,
+    avgTotalAccessPC,
     totalAccessPersonal,
     totalAccessPersonalB1,
     totalAccessPersonalB2,
@@ -75,11 +77,12 @@ const Dashboard = () => {
     totalAccessPersonalNE,
     totalAccessPersonalRO,
     totalAccessPersonalSP,
-    totalAccessTR,
+    avgTotalAccessPersonal,
     totalAccessVehicles,
     totalAccessVehiclesNL,
     totalAccessVehiclesRO,
-    totalAccessVehiclesSP
+    totalAccessVehiclesSP,
+    avgTotalAccessVehicles
   } = entities;
 
   useEffect(
@@ -174,7 +177,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  Promedio diario ###
+                  Promedio diario {avgTotalAccessPC}
                 </Typography>
               </CardContent>
 
@@ -241,7 +244,7 @@ const Dashboard = () => {
                     lineHeight: "normal"
                   }}
                 >
-                  Promedio diario ###
+                  Promedio diario {avgTotalAccessVehicles}
                 </Typography>
               </CardContent>
             </Card>
@@ -342,7 +345,7 @@ const Dashboard = () => {
                     lineHeight: "normal"
                   }}
                 >
-                  Promedio diario ###
+                  Promedio diario {avgTotalAccessPersonal}
                 </Typography>
               </CardContent>
             </Card>
@@ -535,14 +538,14 @@ const Dashboard = () => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={1}>
-          <Grid item lg={3}>
+        <Grid container spacing={0}>
+          <Grid item lg={4}>
             <DonutPCChart />
           </Grid>
-          <Grid item lg={3}>
+          <Grid item lg={4}>
             <DonutVChart />
           </Grid>
-          <Grid item lg={3}>
+          <Grid item lg={4}>
             <DonutTTChart />
           </Grid>
         </Grid>

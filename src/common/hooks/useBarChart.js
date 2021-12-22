@@ -11,7 +11,10 @@ const initialStruct = {
   options: {
     chart: {
       height: 350,
-      type: "bar"
+      type: "bar",
+      zoom: {
+        enabled: false,
+      }
     },
     plotOptions: {
       bar: {
