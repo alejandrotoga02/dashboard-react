@@ -24,21 +24,21 @@ const initialState = {
     avgTotalAccessVehicles: 0,
     totalAccessVehiclesNL: 0,
     totalAccessVehiclesRO: 0,
-    totalAccessVehiclesSP: 0,
+    totalAccessVehiclesSP: 0
   },
   dashboardLoading: false
-}
+};
 
 // First, create the thunk
 export const fetchDashboard = createAsyncThunk(
   "dashboard/fetch",
   async (params = {}) => {
-    const { data: dataOne} = await getStatistics(params);
+    const { data: dataOne } = await getStatistics(params);
     const { data: dataTwo } = await getGraphs(params);
     const response = {
       ...dataOne,
       ...dataTwo
-    }
+    };
     return response;
   }
 );
@@ -60,7 +60,7 @@ const dashboardSlice = createSlice({
       .addCase(fetchDashboard.pending, (state, _action) => {
         state.dashboardLoading = true;
       })
-      .addCase(fetchDashboard.rejected, (state) => {
+      .addCase(fetchDashboard.rejected, state => {
         state.dashboardLoading = false;
       });
   }

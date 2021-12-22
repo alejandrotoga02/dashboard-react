@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Logos = () => {
+const Logos = ( { name = '' }) => {
   const classes = useStyles();
   return (
     <>
@@ -74,7 +74,7 @@ const Logos = () => {
               component="div"
               style={{ color: "#white" }}
             >
-              TABLERO DE INFORMACIÓN DE ACCESOS AL PUERTO
+              TABLERO DE INFORMACIÓN DE ACCESOS AL PUERTO {name}
             </Typography>
             <p className={classes.subTitle}>
               Administración del Sistema Portuario Nacional Manzanillo

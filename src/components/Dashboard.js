@@ -99,7 +99,7 @@ const Dashboard = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Logos />
+        <Logos name="" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
