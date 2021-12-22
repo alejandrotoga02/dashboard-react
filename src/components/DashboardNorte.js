@@ -84,12 +84,11 @@ const DashboardNorte = () => {
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.cardTitle}>
               <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
-               
                 <Typography
                   gutterBottom
                   variant="h5"
                   component="div"
-                  style={{ color: "#004C00", fontWeight: "bolder"  }}
+                  style={{ color: "#004C00", fontWeight: "bolder" }}
                 >
                   Autotransporte de carga
                 </Typography>
@@ -107,7 +106,9 @@ const DashboardNorte = () => {
 
           <Grid item xs={2} md={2} lg={2}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3", fontWeight: "bolder" }}>
+              <CardContent
+                style={{ background: "#D3D3D3", fontWeight: "bolder" }}
+              >
                 <Typography
                   gutterBottom
                   variant="h4"
@@ -119,7 +120,7 @@ const DashboardNorte = () => {
               </CardContent>
             </Card>
           </Grid>
-          
+
           <Grid item xs={2} md={1} lg={1}>
             <Card className={classes.cardTitle}>
               <CardContent style={{ background: "#D3D3D3" }}>
@@ -147,7 +148,7 @@ const DashboardNorte = () => {
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3", padding: 0  }}>
+              <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
                 <Typography
                   gutterBottom
                   variant="h5"
@@ -170,7 +171,9 @@ const DashboardNorte = () => {
 
           <Grid item xs={2} md={2} lg={2}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3", fontWeight: "bolder" }}>
+              <CardContent
+                style={{ background: "#D3D3D3", fontWeight: "bolder" }}
+              >
                 <Typography
                   gutterBottom
                   variant="h4"
@@ -211,7 +214,7 @@ const DashboardNorte = () => {
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3",  padding: 0 }}>
+              <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
                 <Typography
                   gutterBottom
                   variant="h6"
