@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Logos = ({ name, subTitle }) => {
+const LogosNum = () => {
   const classes = useStyles();
   return (
     <>
@@ -70,15 +70,12 @@ const Logos = ({ name, subTitle }) => {
           <Item>
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h4"
               component="div"
               style={{ color: "#white" }}
             >
-              {name}
+              NUMERALIA DE ACCESOS AL PUERTO
             </Typography>
-            <p className={classes.subTitle}>
-              Administración del Sistema Portuario Nacional Manzanillo
-            </p>
           </Item>
         </Grid>
         <Grid item xs={4} md={4} lg={2} className={classes.logoRight}>
@@ -94,4 +91,4 @@ const Logos = ({ name, subTitle }) => {
   );
 };
 
-export default Logos;
+export default LogosNum;

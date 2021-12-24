@@ -98,7 +98,7 @@ const DashboardSur = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Logos name="- ZONA SUR" />
+        <Logos name="TABLERO DE INFORMACIÓN DE ACCESOS AL PUERTO - ZONA SUR" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
@@ -282,11 +282,10 @@ const DashboardSur = () => {
               </CardContent>
             </Card>
           </Grid>
-
         </Grid>
-          <Grid item lg={6}>
-            <LineChart />
-          </Grid>
+        <Grid item lg={6}>
+          <LineChart />
+        </Grid>
 
         {/* third section grays */}
         <Grid container spacing={1}>

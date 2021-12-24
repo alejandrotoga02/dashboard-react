@@ -78,7 +78,7 @@ const DashboardNorte = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Logos name="- ZONA NORTE" />
+        <Logos name="TABLERO DE INFORMACIÓN DE ACCESOS AL PUERTO - ZONA NORTE" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>

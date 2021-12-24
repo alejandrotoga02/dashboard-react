@@ -4,6 +4,7 @@ import {
   DashboardNorte,
   DashboardSur
 } from "./content/control-accesos";
+import Numeralia from "./content/control-accesos/Numeralia";
 import Layout from "./content/Layout";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route index element={<Dashboard />} />
         <Route path="norte" element={<DashboardNorte />} />
         <Route path="sur" element={<DashboardSur />} />
+        <Route path="numeralia" element={<Numeralia />} />
       </Route>
       <Route
         path="*"
