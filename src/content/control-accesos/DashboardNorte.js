@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDashboard } from "../common/reducers/dashboardReducer";
+import { fetchDashboard } from "../../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import Logos from "./sections/Logos";
-import { ByDayChart, ByMonthChart, LineChart } from "./charts";
+import Logos from "../sections/Logos";
+import { ByDayChart, ByMonthChart, LineChart } from "./components/charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {

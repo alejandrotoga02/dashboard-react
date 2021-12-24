@@ -1,16 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
+import { Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     // display: "flex",
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   drawerPaper: {
     position: "relative",
@@ -18,19 +18,19 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawerPaperClose: {
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9),
-    },
+      width: theme.spacing(9)
+    }
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -39,14 +39,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     flexGrow: 1,
     height: "100%",
-    overflow: "100%",
+    overflow: "100%"
   },
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   },
   fixedHeight: {
-    height: 340,
+    height: 340
   },
   // added the footer class
   footer: {
@@ -54,19 +54,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
     backgroundColor: "white",
     // just this item, push to bottom
-    alignSelf: "flex-end",
-  },
+    alignSelf: "flex-end"
+  }
 }));
 
-const Layout = ({ children }) => {
+const Layout = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>      
-      <main className={classes.content}>        
+    <div className={classes.root}>
+      <main className={classes.content}>
         <Container maxWidth={false} className={classes.container}>
-          {children}
-        </Container>      
+          <Outlet />
+        </Container>
       </main>
     </div>
   );

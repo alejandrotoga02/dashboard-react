@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDashboard } from "../common/reducers/dashboardReducer";
+import { fetchDashboard } from "../../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import Logos from "./sections/Logos";
+import Logos from "../sections/Logos";
 import {
   ByDayChart,
   ByMonthChart,
@@ -12,7 +12,7 @@ import {
   DonutTTChart,
   DonutVChart,
   LineChart
-} from "./charts";
+} from "./components/charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DashboardSur = () => {
+const Dashboard = () => {
   const classes = useStyles();
   const { dashboardLoading, entities } = useSelector(state => state.dashboard);
   const dispatch = useDispatch();
@@ -86,12 +86,7 @@ const DashboardSur = () => {
   } = entities;
 
   useEffect(
-    () =>
-      dispatch(
-        fetchDashboard({
-          zona: "Sur"
-        })
-      ),
+    () => dispatch(fetchDashboard()),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch]
   );
@@ -100,7 +95,7 @@ const DashboardSur = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Logos name="- ZONA SUR" />
+        <Logos name="" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
@@ -555,4 +550,4 @@ const DashboardSur = () => {
   );
 };
 
-export default DashboardSur;
+export default Dashboard;

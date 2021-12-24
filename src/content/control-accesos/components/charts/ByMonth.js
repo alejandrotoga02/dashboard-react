@@ -1,9 +1,9 @@
 import ReactApexChart from "react-apexcharts";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import useBarChart from "../../common/hooks/useBarChart";
+import useBarChart from "../../../../common/hooks/useBarChart";
 /* eslint-disable-next-line */
-import { fetchDashboard } from "../../common/reducers/dashboardReducer";
+import { fetchDashboard } from "../../../../common/reducers/dashboardReducer";
 
 const selectBarChartByMonth = createSelector(
   state => state.dashboard,

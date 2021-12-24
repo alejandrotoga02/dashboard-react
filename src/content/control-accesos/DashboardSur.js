@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDashboard } from "./../common/reducers/dashboardReducer";
+import { fetchDashboard } from "../../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import Logos from "./sections/Logos";
+import Logos from "../sections/Logos";
 import {
   ByDayChart,
   ByMonthChart,
@@ -12,7 +12,7 @@ import {
   DonutTTChart,
   DonutVChart,
   LineChart
-} from "./charts";
+} from "./components/charts";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Dashboard = () => {
+const DashboardSur = () => {
   const classes = useStyles();
   const { dashboardLoading, entities } = useSelector(state => state.dashboard);
   const dispatch = useDispatch();
@@ -74,19 +74,22 @@ const Dashboard = () => {
     totalAccessPersonalFL,
     totalAccessPersonalGP,
     totalAccessPersonalMO,
-    totalAccessPersonalNE,
     totalAccessPersonalRO,
     totalAccessPersonalSP,
     avgTotalAccessPersonal,
     totalAccessVehicles,
-    totalAccessVehiclesNL,
     totalAccessVehiclesRO,
     totalAccessVehiclesSP,
     avgTotalAccessVehicles
   } = entities;
 
   useEffect(
-    () => dispatch(fetchDashboard()),
+    () =>
+      dispatch(
+        fetchDashboard({
+          zona: "Sur"
+        })
+      ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch]
   );
@@ -95,7 +98,7 @@ const Dashboard = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Logos name="" />
+        <Logos name="- ZONA SUR" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
@@ -270,18 +273,6 @@ const Dashboard = () => {
           <Grid item xs={2} md={2} lg={2}>
             <Card className={classes.cardNoLine}>
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Norte Ligeros
-                </Typography>
-                <Typography variant="h4" color="textPrimary" component="div">
-                  {totalAccessVehiclesNL.toLocaleString()}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
                 <Typography variant="caption" color="textSecondary">
                   Muelle Pesquero
                 </Typography>
@@ -292,10 +283,10 @@ const Dashboard = () => {
             </Card>
           </Grid>
 
+        </Grid>
           <Grid item lg={6}>
             <LineChart />
           </Grid>
-        </Grid>
 
         {/* third section grays */}
         <Grid container spacing={1}>
@@ -385,24 +376,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Norte Elevado
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalNE.toLocaleString()}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
+
           <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
             <Card className={classes.cardNoLine}>
               <CardContent>
@@ -550,4 +524,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardSur;

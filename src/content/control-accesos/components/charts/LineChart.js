@@ -1,7 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import useLineBar from "../../common/hooks/useLineBar";
+import useLineBar from "../../../../common/hooks/useLineBar";
 
 const selectLineChartByHour = createSelector(
   state => state.dashboard,
