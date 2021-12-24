@@ -5,6 +5,39 @@ import { fetchNumeralia } from "../../common/reducers/numeraliaReducer";
 import LogosNum from "../sections/LogosNum";
 import TableNum from "./components/Table";
 
+// This is a custom filter UI for selecting
+// a unique option from a list
+const SelectColumnFilter = ({
+  column: { filterValue, setFilter, preFilteredRows, id }
+}) => {
+  // Calculate the options for filtering
+  // using the preFilteredRows
+  const options = React.useMemo(() => {
+    const options = new Set();
+    preFilteredRows.forEach(row => {
+      options.add(row.values[id]);
+    });
+    return [...options.values()];
+  }, [id, preFilteredRows]);
+
+  // Render a multi-select box
+  return (
+    <select
+      value={filterValue}
+      onChange={e => {
+        setFilter(e.target.value || undefined);
+      }}
+    >
+      <option value="">All</option>
+      {options.map((option, i) => (
+        <option key={i} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  );
+};
+
 const Numeralia = () => {
   const { data, loading } = useSelector(state => state.numeralia);
   const dispatch = useDispatch();
@@ -19,19 +52,27 @@ const Numeralia = () => {
     () => [
       {
         Header: "Zona",
-        accessor: "Zona"
+        accessor: "Zona",
+        Filter: SelectColumnFilter,
+        filter: "includes"
       },
       {
         Header: "Tipo",
-        accessor: "SubTipo_Lectura"
+        accessor: "SubTipo_Lectura",
+        Filter: SelectColumnFilter,
+        filter: "includes"
       },
       {
         Header: "Camara",
-        accessor: "ID_Camara"
+        accessor: "ID_Camara",
+        Filter: SelectColumnFilter,
+        filter: "includes"
       },
       {
         Header: "Garita",
-        accessor: "Nombre_Garita"
+        accessor: "Nombre_Garita",
+        Filter: SelectColumnFilter,
+        filter: "includes"
       },
       {
         Header: "Totalales",
