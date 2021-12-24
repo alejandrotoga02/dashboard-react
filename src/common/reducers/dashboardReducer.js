@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGraphs, getStatistics } from "../../services/DashboardService";
+import { getGraphs, getStatistics } from "../../services/AcessService";
 
 const initialState = {
   entities: {
