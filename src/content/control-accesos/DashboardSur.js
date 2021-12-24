@@ -202,7 +202,7 @@ const DashboardSur = () => {
         {/* secod section grays */}
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.cardTitle}>
+            <Card className={classes.card}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   gutterBottom
@@ -213,11 +213,26 @@ const DashboardSur = () => {
                   Vehículos utilitarios
                 </Typography>
               </CardContent>
+
+              <CardContent>
+                <Grid item>
+                  <Typography
+                    variant="caption"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    San Pedrito
+                  </Typography>
+                  <Typography variant="h4" color="textPrimary" component="div">
+                    {totalAccessVehiclesSP.toLocaleString()}
+                  </Typography>
+                </Grid>
+              </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardTitle}>
+            <Card className={classes.card}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   gutterBottom
@@ -226,6 +241,15 @@ const DashboardSur = () => {
                   style={{ color: "#004C00" }}
                 >
                   {totalAccessVehicles.toLocaleString()}
+                </Typography>
+              </CardContent>
+
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Muelle Pesquero
+                </Typography>
+                <Typography variant="h4" color="textPrimary" component="div">
+                  {totalAccessVehiclesRO.toLocaleString()}
                 </Typography>
               </CardContent>
             </Card>
@@ -248,43 +272,9 @@ const DashboardSur = () => {
               </CardContent>
             </Card>
           </Grid>
-        </Grid>
-
-        <Grid container spacing={1}>
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    San Pedrito
-                  </Typography>
-                  <Typography variant="h4" color="textPrimary" component="div">
-                    {totalAccessVehiclesSP.toLocaleString()}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
+          <Grid item lg={6}>
+            <LineChart />
           </Grid>
-
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Typography variant="caption" color="textSecondary">
-                  Muelle Pesquero
-                </Typography>
-                <Typography variant="h4" color="textPrimary" component="div">
-                  {totalAccessVehiclesRO.toLocaleString()}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-        <Grid item lg={6}>
-          <LineChart />
         </Grid>
 
         {/* third section grays */}
@@ -375,7 +365,6 @@ const DashboardSur = () => {
               </CardContent>
             </Card>
           </Grid>
-
           <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
             <Card className={classes.cardNoLine}>
               <CardContent>
@@ -407,6 +396,24 @@ const DashboardSur = () => {
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
                     {totalAccessPersonalRO.toLocaleString()}
+                  </Typography>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
+            <Card className={classes.cardNoLine}>
+              <CardContent>
+                <Grid item>
+                  <Typography
+                    variant="caption"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    CEP.
+                  </Typography>
+                  <Typography variant="h5" color="textPrimary" component="div">
+                    {totalAccessPersonalCEP.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -485,26 +492,7 @@ const DashboardSur = () => {
                 </Grid>
               </CardContent>
             </Card>
-          </Grid>
-
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    CEP.
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalCEP.toLocaleString()}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
+          </Grid>         
         </Grid>
 
         <Grid container spacing={0}>

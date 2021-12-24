@@ -199,7 +199,7 @@ const Dashboard = () => {
         {/* secod section grays */}
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.cardTitle}>
+            <Card className={classes.card}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   gutterBottom
@@ -210,46 +210,7 @@ const Dashboard = () => {
                   Vehículos utilitarios
                 </Typography>
               </CardContent>
-            </Card>
-          </Grid>
 
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                  style={{ color: "#004C00" }}
-                >
-                  {totalAccessVehicles.toLocaleString()}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={1} lg={1}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  style={{
-                    color: "#004C00",
-                    fontSize: "1em",
-                    lineHeight: "normal"
-                  }}
-                >
-                  Promedio diario {avgTotalAccessVehicles}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={1}>
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardNoLine}>
               <CardContent>
                 <Grid item>
                   <Typography
@@ -268,7 +229,18 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardNoLine}>
+            <Card className={classes.card}>
+              <CardContent style={{ background: "#D3D3D3" }}>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  style={{ color: "#004C00" }}
+                >
+                  {totalAccessVehicles.toLocaleString()}
+                </Typography>
+              </CardContent>
+
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Norte Ligeros
@@ -279,8 +251,22 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardNoLine}>
+          <Grid item xs={2} md={1} lg={1}>
+            <Card className={classes.card}>
+              <CardContent style={{ background: "#D3D3D3" }}>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  style={{
+                    color: "#004C00",
+                    fontSize: "1em",
+                    lineHeight: "normal"
+                  }}
+                >
+                  Promedio diario {avgTotalAccessVehicles}
+                </Typography>
+              </CardContent>
               <CardContent>
                 <Typography variant="caption" color="textSecondary">
                   Muelle Pesquero
@@ -291,8 +277,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
-
-          <Grid item lg={6}>
+           <Grid item lg={6}>
             <LineChart />
           </Grid>
         </Grid>
