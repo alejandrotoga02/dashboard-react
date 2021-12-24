@@ -15,13 +15,39 @@ const Numeralia = () => {
     [dispatch]
   );
 
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Zona",
+        accessor: "Zona"
+      },
+      {
+        Header: "Tipo",
+        accessor: "SubTipo_Lectura"
+      },
+      {
+        Header: "Camara",
+        accessor: "ID_Camara"
+      },
+      {
+        Header: "Garita",
+        accessor: "Nombre_Garita"
+      },
+      {
+        Header: "Totalales",
+        accessor: "total"
+      }
+    ],
+    []
+  );
+
   return (
     !loading && (
       <>
         <LogosNum />
-        <Grid container spacing={1} style={{ paddingBottom: 40 }}>
+        <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12}>
-            <TableNum data={data} />
+            <TableNum columns={columns} data={data} />
           </Grid>
         </Grid>
       </>

@@ -1,33 +1,13 @@
 import React from "react";
+import MaUTable from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+
 import { useTable } from "react-table";
 
-const TableNum = ({ data }) => {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Zona",
-        accessor: "Zona" // accessor is the "key" in the data
-      },
-      {
-        Header: "Subtipo lectura",
-        accessor: "SubTipo_Lectura"
-      },
-      {
-        Header: "Id camara",
-        accessor: "ID_Camara"
-      },
-      {
-        Header: "Nombre garita",
-        accessor: "Nombre_Garita"
-      },
-      {
-        Header: "Total",
-        accessor: "total"
-      }
-    ],
-    []
-  );
-
+const TableNum = ({ data, columns }) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -37,50 +17,35 @@ const TableNum = ({ data }) => {
   } = useTable({ columns, data });
 
   return (
-    <table {...getTableProps()}>
-      <thead>
+    <MaUTable {...getTableProps()}>
+      <TableHead>
         {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+          <TableRow {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th
-                {...column.getHeaderProps()}
-                // style={{
-                //   borderBottom: "solid 3px red",
-                //   background: "aliceblue",
-                //   color: "black",
-                //   fontWeight: "bold"
-                // }}
-              >
+              <TableCell {...column.getHeaderProps()}>
                 {column.render("Header")}
-              </th>
+              </TableCell>
             ))}
-          </tr>
+          </TableRow>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
+      </TableHead>
+      <TableBody {...getTableBodyProps()}>
         {rows.map(row => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <TableRow {...row.getRowProps()}>
               {row.cells.map(cell => {
                 return (
-                  <td
-                    {...cell.getCellProps()}
-                    // style={{
-                    //   padding: "10px",
-                    //   border: "solid 1px gray",
-                    //   background: "papayawhip"
-                    // }}
-                  >
+                  <TableCell {...cell.getCellProps()}>
                     {cell.render("Cell")}
-                  </td>
+                  </TableCell>
                 );
               })}
-            </tr>
+            </TableRow>
           );
         })}
-      </tbody>
-    </table>
+      </TableBody>
+    </MaUTable>
   );
 };
 
