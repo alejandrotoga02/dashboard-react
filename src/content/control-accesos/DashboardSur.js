@@ -13,6 +13,7 @@ import {
   DonutVChart,
   LineChart
 } from "./components/charts";
+import { numberWithCommas } from "../../common/utils";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -124,7 +125,7 @@ const DashboardSur = () => {
                     Pez Vela
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    {totalAccessPV.toLocaleString()}
+                    {numberWithCommas(totalAccessPV)}
                   </Typography>
                 </Grid>
 
@@ -137,7 +138,7 @@ const DashboardSur = () => {
                     Nortes Pesados
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    {totalAccessNP.toLocaleString()}
+                    {numberWithCommas(totalAccessNP)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -153,7 +154,7 @@ const DashboardSur = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  {totalAccessPC.toLocaleString()}
+                  {numberWithCommas(totalAccessPC)}
                 </Typography>
               </CardContent>
 
@@ -162,7 +163,7 @@ const DashboardSur = () => {
                   Tamo 15
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  {totalAccessTR.toLocaleString()}
+                  {numberWithCommas(totalAccessTR)}
                 </Typography>
               </CardContent>
             </Card>
@@ -224,7 +225,7 @@ const DashboardSur = () => {
                     San Pedrito
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
-                    {totalAccessVehiclesSP.toLocaleString()}
+                    {numberWithCommas(totalAccessVehiclesSP)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -240,7 +241,7 @@ const DashboardSur = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  {totalAccessVehicles.toLocaleString()}
+                  {numberWithCommas(totalAccessVehicles)}
                 </Typography>
               </CardContent>
 
@@ -249,7 +250,7 @@ const DashboardSur = () => {
                   Muelle Pesquero
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  {totalAccessVehiclesRO.toLocaleString()}
+                  {numberWithCommas(totalAccessVehiclesRO)}
                 </Typography>
               </CardContent>
             </Card>
@@ -303,7 +304,7 @@ const DashboardSur = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  {totalAccessPersonal.toLocaleString()}
+                  {numberWithCommas(totalAccessPersonal)}
                 </Typography>
               </CardContent>
             </Card>
@@ -341,7 +342,7 @@ const DashboardSur = () => {
                     San Pedrito
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalSP.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalSP)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -359,7 +360,7 @@ const DashboardSur = () => {
                     La Flechita
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalFL.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalFL)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -377,7 +378,7 @@ const DashboardSur = () => {
                     Gestiones Portuarias
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalGP.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalGP)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -395,7 +396,7 @@ const DashboardSur = () => {
                     Muelle Pesquero
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalRO.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalRO)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -413,7 +414,7 @@ const DashboardSur = () => {
                     CEP
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalCE.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalCE)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -433,7 +434,7 @@ const DashboardSur = () => {
                     Base 1
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalB1.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalB1)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -451,7 +452,7 @@ const DashboardSur = () => {
                     Base 2
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalB2.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalB2)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -469,7 +470,7 @@ const DashboardSur = () => {
                     Base 3
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalB3.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalB3)}
                   </Typography>
                 </Grid>
               </CardContent>
@@ -487,7 +488,7 @@ const DashboardSur = () => {
                     Módulo 8
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalMO.toLocaleString()}
+                    {numberWithCommas(totalAccessPersonalMO)}
                   </Typography>
                 </Grid>
               </CardContent>

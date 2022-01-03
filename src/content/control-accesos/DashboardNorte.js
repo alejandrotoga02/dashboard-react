@@ -6,6 +6,7 @@ import { fetchDashboard } from "../../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import Logos from "../sections/Logos";
 import { ByDayChart, ByMonthChart, LineChart } from "./components/charts";
+import { numberWithCommas } from "../../common/utils";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -115,7 +116,7 @@ const DashboardNorte = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  {totalAccessPC.toLocaleString()}
+                  {numberWithCommas(totalAccessPC)}
                 </Typography>
               </CardContent>
             </Card>
@@ -130,7 +131,7 @@ const DashboardNorte = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  Promedio diario {avgTotalAccessPC}
+                  Promedio diario {numberWithCommas(avgTotalAccessPC)}
                 </Typography>
               </CardContent>
             </Card>
@@ -180,7 +181,7 @@ const DashboardNorte = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  {totalAccessVehicles.toLocaleString()}
+                  {numberWithCommas(totalAccessVehicles)}
                 </Typography>
               </CardContent>
             </Card>
@@ -199,7 +200,7 @@ const DashboardNorte = () => {
                     lineHeight: "normal"
                   }}
                 >
-                  Promedio diario {avgTotalAccessVehicles}
+                  Promedio diario {numberWithCommas(avgTotalAccessVehicles)}
                 </Typography>
               </CardContent>
             </Card>
@@ -244,7 +245,7 @@ const DashboardNorte = () => {
                   component="div"
                   style={{ color: "#004C00", fontWeight: "bolder" }}
                 >
-                  {totalAccessPersonal.toLocaleString()}
+                  {numberWithCommas(totalAccessPersonal)}
                 </Typography>
               </CardContent>
             </Card>
@@ -262,7 +263,7 @@ const DashboardNorte = () => {
                     lineHeight: "normal"
                   }}
                 >
-                  Promedio diario {avgTotalAccessPersonal}
+                  Promedio diario {numberWithCommas(avgTotalAccessPersonal)}
                 </Typography>
               </CardContent>
             </Card>
