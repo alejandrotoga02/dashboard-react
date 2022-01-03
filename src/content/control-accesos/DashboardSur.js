@@ -134,7 +134,7 @@ const DashboardSur = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    Norte Pesados
+                    Nortes Pesados
                   </Typography>
                   <Typography variant="h4" color="textPrimary" component="div">
                     {totalAccessNP.toLocaleString()}
@@ -356,7 +356,7 @@ const DashboardSur = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    La flechita
+                    La Flechita
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
                     {totalAccessPersonalFL.toLocaleString()}
@@ -374,7 +374,7 @@ const DashboardSur = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    Gestiones Portuarios
+                    Gestiones Portuarias
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
                     {totalAccessPersonalGP.toLocaleString()}
@@ -410,7 +410,7 @@ const DashboardSur = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    CEP.
+                    CEP
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
                     {totalAccessPersonalCE.toLocaleString()}
@@ -492,7 +492,7 @@ const DashboardSur = () => {
                 </Grid>
               </CardContent>
             </Card>
-          </Grid>         
+          </Grid>
         </Grid>
 
         <Grid container spacing={0}>
