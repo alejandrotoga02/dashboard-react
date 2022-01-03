@@ -70,7 +70,7 @@ const Dashboard = () => {
     totalAccessPersonalB1,
     totalAccessPersonalB2,
     totalAccessPersonalB3,
-    totalAccessPersonalCEP,
+    totalAccessPersonalCE,
     totalAccessPersonalFL,
     totalAccessPersonalGP,
     totalAccessPersonalMO,
@@ -277,7 +277,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
-           <Grid item lg={6}>
+          <Grid item lg={6}>
             <LineChart />
           </Grid>
         </Grid>
@@ -511,7 +511,7 @@ const Dashboard = () => {
                     CEP.
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalCEP.toLocaleString()}
+                    {totalAccessPersonalCE.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>

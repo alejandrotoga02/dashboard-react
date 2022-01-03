@@ -32,7 +32,7 @@ export const useDonutChart = (data, titleProps) => {
   useEffect(() => {
     setStruct(state => ({
       ...state,
-      series: map(item => item.value, values(data)),
+      series: map(item => item?.value, values(data)),
       options: {
         ...state.options,
         title: {...titleProps},

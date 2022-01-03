@@ -70,7 +70,7 @@ const DashboardSur = () => {
     totalAccessPersonalB1,
     totalAccessPersonalB2,
     totalAccessPersonalB3,
-    totalAccessPersonalCEP,
+    totalAccessPersonalCE,
     totalAccessPersonalFL,
     totalAccessPersonalGP,
     totalAccessPersonalMO,
@@ -413,7 +413,7 @@ const DashboardSur = () => {
                     CEP.
                   </Typography>
                   <Typography variant="h5" color="textPrimary" component="div">
-                    {totalAccessPersonalCEP.toLocaleString()}
+                    {totalAccessPersonalCE.toLocaleString()}
                   </Typography>
                 </Grid>
               </CardContent>

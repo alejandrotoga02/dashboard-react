@@ -11,7 +11,7 @@ const initialState = {
     totalAccessPersonalB1: 0,
     totalAccessPersonalB2: 0,
     totalAccessPersonalB3: 0,
-    totalAccessPersonalCEP: 0,
+    totalAccessPersonalCE: 0,
     totalAccessPersonalFL: 0,
     totalAccessPersonalGP: 0,
     totalAccessPersonalMO: 0,
