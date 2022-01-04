@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "../../common/reducers/dashboardReducer";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import Logos from "../sections/Logos";
 import {
   ByDayChart,
   ByMonthChart,
@@ -96,7 +95,6 @@ const Dashboard = () => {
     !dashboardLoading &&
     entities && (
       <>
-        <Logos name="TABLERO DE INFORMACIÓN DE ACCESOS AL PUERTO" />
         {/*  first section */}
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
@@ -174,7 +172,7 @@ const Dashboard = () => {
                   component="div"
                   style={{ color: "#004C00" }}
                 >
-                  Promedio diario {avgTotalAccessPC}
+                  Promedio diario {numberWithCommas(avgTotalAccessPC)}
                 </Typography>
               </CardContent>
 
@@ -265,7 +263,7 @@ const Dashboard = () => {
                     lineHeight: "normal"
                   }}
                 >
-                  Promedio diario {avgTotalAccessVehicles}
+                  Promedio diario {numberWithCommas(avgTotalAccessVehicles)}
                 </Typography>
               </CardContent>
               <CardContent>

@@ -5,6 +5,8 @@ import {
   DashboardSur
 } from "./content/control-accesos";
 import Numeralia from "./content/control-accesos/Numeralia";
+import General from "./content/frames/General";
+import Historico from "./content/historico/Historico";
 import Layout from "./content/Layout";
 
 const App = () => {
@@ -24,6 +26,10 @@ const App = () => {
         <Route path="sur" element={<DashboardSur />} />
         <Route path="numeralia" element={<Numeralia />} />
       </Route>
+      <Route path="frames" element={<Layout />}>
+        <Route index element={<General />} />
+      </Route>
+      <Route path="historico" element={<Historico />} />
       <Route
         path="*"
         element={
