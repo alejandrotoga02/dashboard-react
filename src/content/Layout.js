@@ -1,7 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
 
@@ -63,6 +67,19 @@ const Layout = () => {
 
   return (
     <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+         
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Accesos al Puerto
+          </Typography>
+          
+          <Button component={Link} color="inherit" to="/accesos">General</Button>
+          <Button component={Link} color="inherit" to="/accesos/norte">Norte</Button>
+          <Button component={Link} color="inherit" to="/accesos/sur">Sur</Button>
+          <Button component={Link} color="inherit" to="/accesos/numeralia">Numeralia</Button>
+        </Toolbar>
+      </AppBar>
       <main className={classes.content}>
         <Container maxWidth={false} className={classes.container}>
           <Outlet />

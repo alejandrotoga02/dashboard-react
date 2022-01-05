@@ -26,7 +26,7 @@ const Historico = () => {
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={2}>
-                <h1>Histórico de Accesos vs Vitas y Maniobras</h1>
+                <h1>Histórico de Accesos vs Citas y Maniobras</h1>
               </TableCell>
             </TableRow>
             <TableRow>

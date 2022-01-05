@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNumeralia } from "../../common/reducers/numeraliaReducer";
-import LogosNum from "../sections/LogosNum";
 import TableNum from "./components/Table";
 
 // This is a custom filter UI for selecting
@@ -85,7 +84,6 @@ const Numeralia = () => {
   return (
     !loading && (
       <>
-        <LogosNum />
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12}>
             <TableNum columns={columns} data={data} />
