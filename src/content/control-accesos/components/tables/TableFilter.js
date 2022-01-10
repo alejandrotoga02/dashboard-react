@@ -31,7 +31,7 @@ const DefaultColumnFilter = ({
   );
 };
 
-const TableNum = ({ data, columns }) => {
+const TableFilter = ({ data, columns }) => {
   const filterTypes = React.useMemo(
     () => ({
       // Add a new fuzzyTextFilterFn filter type.
@@ -107,4 +107,4 @@ const TableNum = ({ data, columns }) => {
   );
 };
 
-export default TableNum;
+export default TableFilter;

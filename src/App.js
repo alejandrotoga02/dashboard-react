@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import {
+  Layout,
   Dashboard,
   DashboardNorte,
-  DashboardSur
+  DashboardSur,
+  Numeralia
 } from "./content/control-accesos";
-import Numeralia from "./content/control-accesos/Numeralia";
 import General from "./content/frames/General";
 import Historico from "./content/historico/Historico";
-import Layout from "./content/Layout";
 
 const App = () => {
   return (

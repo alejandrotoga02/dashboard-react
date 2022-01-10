@@ -13,31 +13,10 @@ import {
   LineChart
 } from "./components/charts";
 import { numberWithCommas } from "../../common/utils";
+import Table from "./components/tables/Table";
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column"
-  },
-  logoRight: {
-    paddingTop: 20,
-    display: "flex",
-    justifyContent: "center"
-  },
-  title: {
-    fontWeight: "normal",
-    fontSize: "1.4em",
-    marginBottom: 0
-  },
-  subTitle: {
-    fontWeight: "normal",
-    fontSize: "1em",
-    marginBottom: 0
-  },
+const useStyles = makeStyles(() => ({
   card: {
-    height: 200,
     border: "none",
     boxShadow: "none"
   },
@@ -48,10 +27,14 @@ const useStyles = makeStyles(theme => ({
   cardTitle: {
     height: 70,
     border: "none",
-    boxShadow: "none"
+    boxShadow: "none",
+    textAlign: "center"
   },
-  itemLg: {
-    maxWidth: "16%"
+  table: {
+    minWidth: "20vw"
+  },
+  table2: {
+    minWidth: "14vw"
   }
 }));
 
@@ -62,6 +45,7 @@ const Dashboard = () => {
 
   const {
     totalAccessNP,
+    totalAccessRO,
     totalAccessPC,
     totalAccessPV,
     totalAccessTR,
@@ -111,31 +95,14 @@ const Dashboard = () => {
               </CardContent>
 
               <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Pez Vela
-                  </Typography>
-                  <Typography variant="h4" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPV)}
-                  </Typography>
-                </Grid>
-
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Nortes Pesados
-                  </Typography>
-                  <Typography variant="h4" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessNP)}
-                  </Typography>
-                </Grid>
+                <Table
+                  class={classes.table}
+                  columns={[
+                    { Header: "Pez Vela", accessor: "PV" },
+                    { Header: "Nortes Pesados", accessor: "NP" }
+                  ]}
+                  data={[{ PV: totalAccessPV, NP: totalAccessNP }]}
+                />
               </CardContent>
             </Card>
           </Grid>
@@ -154,12 +121,10 @@ const Dashboard = () => {
               </CardContent>
 
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Tamo 15
-                </Typography>
-                <Typography variant="h4" color="textPrimary" component="div">
-                  {numberWithCommas(totalAccessTR)}
-                </Typography>
+                <Table
+                  columns={[{ Header: "Tramo 15", accessor: "TR" }]}
+                  data={[{ TR: totalAccessTR }]}
+                />
               </CardContent>
             </Card>
           </Grid>
@@ -181,7 +146,7 @@ const Dashboard = () => {
                   Muelle Pesquero
                 </Typography>
                 <Typography variant="h4" color="textPrimary" component="div">
-                  0
+                  {numberWithCommas(totalAccessRO)}
                 </Typography>
               </CardContent>
             </Card>
@@ -211,18 +176,10 @@ const Dashboard = () => {
               </CardContent>
 
               <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    San Pedrito
-                  </Typography>
-                  <Typography variant="h4" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessVehiclesSP)}
-                  </Typography>
-                </Grid>
+                <Table
+                  columns={[{ Header: "San Pedrito", accessor: "SP" }]}
+                  data={[{ SP: totalAccessVehiclesSP }]}
+                />
               </CardContent>
             </Card>
           </Grid>
@@ -241,12 +198,10 @@ const Dashboard = () => {
               </CardContent>
 
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Norte Ligeros
-                </Typography>
-                <Typography variant="h4" color="textPrimary" component="div">
-                  {numberWithCommas(totalAccessVehiclesNL)}
-                </Typography>
+                <Table
+                  columns={[{ Header: "Norte Ligeros", accessor: "NL" }]}
+                  data={[{ NL: totalAccessVehiclesNL }]}
+                />
               </CardContent>
             </Card>
           </Grid>
@@ -254,13 +209,10 @@ const Dashboard = () => {
             <Card className={classes.card}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
-                  gutterBottom
-                  variant="h6"
+                  variant="caption"
                   component="div"
                   style={{
-                    color: "#004C00",
-                    fontSize: "1em",
-                    lineHeight: "normal"
+                    color: "#004C00"
                   }}
                 >
                   Promedio diario {numberWithCommas(avgTotalAccessVehicles)}
@@ -284,7 +236,7 @@ const Dashboard = () => {
         {/* third section grays */}
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.cardTitle}>
+            <Card className={classes.card}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   gutterBottom
@@ -295,11 +247,46 @@ const Dashboard = () => {
                   Personal
                 </Typography>
               </CardContent>
+
+              <CardContent>
+                <Table
+                  class={classes.table}
+                  cellClass={"h5"}
+                  columns={[
+                    { Header: "San Pedrito", accessor: "SP" },
+                    { Header: "La Flechita", accessor: "FL" },
+                    { Header: "Norte Elevado", accessor: "NE" }
+                  ]}
+                  data={[
+                    {
+                      SP: totalAccessPersonalSP,
+                      FL: totalAccessPersonalFL,
+                      NE: totalAccessPersonalNE
+                    }
+                  ]}
+                />
+                <Table
+                  class={classes.table}
+                  cellClass={"h5"}
+                  columns={[
+                    { Header: "Base 1", accessor: "B1" },
+                    { Header: "Base 2", accessor: "B2" },
+                    { Header: "Base 3", accessor: "B3" }
+                  ]}
+                  data={[
+                    {
+                      B1: totalAccessPersonalB1,
+                      B2: totalAccessPersonalB2,
+                      B3: totalAccessPersonalB3
+                    }
+                  ]}
+                />
+              </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardTitle}>
+            <Card className={classes.card}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
                   gutterBottom
@@ -310,209 +297,52 @@ const Dashboard = () => {
                   {numberWithCommas(totalAccessPersonal)}
                 </Typography>
               </CardContent>
+
+              <CardContent>
+                <Table
+                  class={classes.table2}
+                  cellClass={"h5"}
+                  columns={[
+                    { Header: "Gestiones Portuarias", accessor: "GP" },
+                    { Header: "Muelle Pesquero", accessor: "RO" }
+                  ]}
+                  data={[
+                    {
+                      GP: totalAccessPersonalGP,
+                      RO: totalAccessPersonalRO
+                    }
+                  ]}
+                />
+                <Table
+                  class={classes.table2}
+                  cellClass={"h5"}
+                  columns={[
+                    { Header: "Módulo 8", accessor: "MO" },
+                    { Header: "CEP", accessor: "CE" }
+                  ]}
+                  data={[
+                    {
+                      MO: totalAccessPersonalMO,
+                      CE: totalAccessPersonalCE
+                    }
+                  ]}
+                />
+              </CardContent>
             </Card>
           </Grid>
           <Grid item xs={2} md={1} lg={1}>
             <Card className={classes.cardTitle}>
               <CardContent style={{ background: "#D3D3D3" }}>
                 <Typography
-                  gutterBottom
-                  variant="h6"
+                  variant="caption"
                   component="div"
                   style={{
                     color: "#004C00",
-                    fontSize: "1em",
-                    lineHeight: "normal"
+                    textAlign: "left"
                   }}
                 >
                   Promedio diario {numberWithCommas(avgTotalAccessPersonal)}
                 </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    San Pedrito
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalSP)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    La Flechita
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalFL)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Norte Elevado
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalNE)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Gestiones Portuarias
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalGP)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Muelle Pesquero
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalRO)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Base 1
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalB1)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Base 2
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalB2)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Base 3
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalB3)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Módulo 8
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalMO)}
-                  </Typography>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} md={2} lg={1} className={classes.itemLg}>
-            <Card className={classes.cardNoLine}>
-              <CardContent>
-                <Grid item>
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    CEP
-                  </Typography>
-                  <Typography variant="h5" color="textPrimary" component="div">
-                    {numberWithCommas(totalAccessPersonalCE)}
-                  </Typography>
-                </Grid>
               </CardContent>
             </Card>
           </Grid>

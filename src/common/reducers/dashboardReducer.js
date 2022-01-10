@@ -7,6 +7,7 @@ const initialState = {
     totalAccessPC: 0,
     avgTotalAccessPC: 0,
     totalAccessPV: 0,
+    totalAccessRO: 0,
     totalAccessPersonal: 0,
     totalAccessPersonalB1: 0,
     totalAccessPersonalB2: 0,

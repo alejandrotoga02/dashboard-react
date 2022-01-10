@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useSearchParams } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -64,6 +64,11 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = () => {
   const classes = useStyles();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    console.log( searchParams.get('token') )
+  },[searchParams])
 
   return (
     <div className={classes.root}>

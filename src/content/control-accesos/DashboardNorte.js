@@ -14,11 +14,6 @@ const useStyles = makeStyles(theme => ({
     overflow: "auto",
     flexDirection: "column"
   },
-  logoRight: {
-    paddingTop: 20,
-    display: "flex",
-    justifyContent: "center"
-  },
   title: {
     fontWeight: "normal",
     fontSize: "1.4em",

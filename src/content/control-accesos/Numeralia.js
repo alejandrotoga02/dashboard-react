@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNumeralia } from "../../common/reducers/numeraliaReducer";
-import TableNum from "./components/Table";
+import TableFilter from "./components/tables/TableFilter";
 
 // This is a custom filter UI for selecting
 // a unique option from a list
@@ -86,7 +86,7 @@ const Numeralia = () => {
       <>
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12}>
-            <TableNum columns={columns} data={data} />
+            <TableFilter columns={columns} data={data} />
           </Grid>
         </Grid>
       </>
