@@ -20,10 +20,6 @@ const useStyles = makeStyles(() => ({
     border: "none",
     boxShadow: "none"
   },
-  cardNoLine: {
-    border: "none",
-    boxShadow: "none"
-  },
   cardTitle: {
     height: 70,
     border: "none",
