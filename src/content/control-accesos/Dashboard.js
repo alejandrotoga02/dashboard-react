@@ -342,17 +342,14 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
-        </Grid>
 
-        <Grid container spacing={0}>
-          <Grid item lg={4}>
+          <Grid item lg={3}>
             <DonutPCChart />
-          </Grid>
-          <Grid item lg={4}>
-            <DonutVChart />
-          </Grid>
-          <Grid item lg={4}>
             <DonutTTChart />
+          </Grid>
+
+          <Grid item lg={3}>
+            <DonutVChart />
           </Grid>
         </Grid>
       </>

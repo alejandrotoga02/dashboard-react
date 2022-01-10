@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { keys, values } from "ramda";
+import { numberWithCommas } from "../utils";
 
 const initialStruct = {
   series: [
@@ -28,7 +29,7 @@ const initialStruct = {
     dataLabels: {
       enabled: true,
       formatter: val => {
-        return val;
+        return numberWithCommas(val);
       }
     },
     title: {

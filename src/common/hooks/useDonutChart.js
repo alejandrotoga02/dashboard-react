@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { keys, map, values } from "ramda";
 const initialStruct = {
-  series: [44, 55, 41, 17, 15],
+  series: [],
   options: {
     chart: {
       type: "donut"
