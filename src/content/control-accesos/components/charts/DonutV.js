@@ -20,6 +20,7 @@ const DonutVChart = () => {
         options={state.options}
         series={state.series}
         type="donut"
+        width={310}
       />
     </div>
   );

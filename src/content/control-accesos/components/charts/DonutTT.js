@@ -20,6 +20,7 @@ const DonutTTChart = () => {
         options={state.options}
         series={state.series}
         type="donut"
+        width={410}
       />
     </div>
   );

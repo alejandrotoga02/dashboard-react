@@ -40,7 +40,6 @@ const DashboardSur = () => {
   const dispatch = useDispatch();
 
   const {
-    totalAccessNP,
     totalAccessPC,
     totalAccessPV,
     totalAccessTR,
@@ -95,7 +94,7 @@ const DashboardSur = () => {
 
               <CardContent>
                 <Table
-                  class={classes.table}
+                  className={classes.table}
                   columns={[{ Header: "Pez Vela", accessor: "PV" }]}
                   data={[{ PV: totalAccessPV }]}
                 />
@@ -238,7 +237,7 @@ const DashboardSur = () => {
 
               <CardContent>
                 <Table
-                  class={classes.table}
+                  className={classes.table}
                   cellClass={"h5"}
                   columns={[
                     { Header: "San Pedrito", accessor: "SP" },
@@ -254,7 +253,7 @@ const DashboardSur = () => {
                   ]}
                 />
                 <Table
-                  class={classes.table}
+                  className={classes.table}
                   cellClass={"h5"}
                   columns={[
                     { Header: "Base 1", accessor: "B1" },
@@ -288,7 +287,7 @@ const DashboardSur = () => {
 
               <CardContent>
                 <Table
-                  class={classes.table2}
+                  className={classes.table2}
                   cellClass={"h5"}
                   columns={[
                     { Header: "Muelle Pesquero", accessor: "RO" },
@@ -302,7 +301,7 @@ const DashboardSur = () => {
                   ]}
                 />
                 <Table
-                  class={classes.table2}
+                  className={classes.table2}
                   cellClass={"h5"}
                   columns={[{ Header: "Módulo 8", accessor: "MO" }]}
                   data={[{ MO: totalAccessPersonalMO }]}

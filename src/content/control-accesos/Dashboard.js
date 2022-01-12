@@ -92,7 +92,7 @@ const Dashboard = () => {
 
               <CardContent>
                 <Table
-                  class={classes.table}
+                  className={classes.table}
                   columns={[
                     { Header: "Pez Vela", accessor: "PV" },
                     { Header: "Nortes Pesados", accessor: "NP" }
@@ -246,7 +246,7 @@ const Dashboard = () => {
 
               <CardContent>
                 <Table
-                  class={classes.table}
+                  className={classes.table}
                   cellClass={"h5"}
                   columns={[
                     { Header: "San Pedrito", accessor: "SP" },
@@ -262,7 +262,7 @@ const Dashboard = () => {
                   ]}
                 />
                 <Table
-                  class={classes.table}
+                  className={classes.table}
                   cellClass={"h5"}
                   columns={[
                     { Header: "Base 1", accessor: "B1" },
@@ -296,7 +296,7 @@ const Dashboard = () => {
 
               <CardContent>
                 <Table
-                  class={classes.table2}
+                  className={classes.table2}
                   cellClass={"h5"}
                   columns={[
                     { Header: "Gestiones Portuarias", accessor: "GP" },
@@ -310,7 +310,7 @@ const Dashboard = () => {
                   ]}
                 />
                 <Table
-                  class={classes.table2}
+                  className={classes.table2}
                   cellClass={"h5"}
                   columns={[
                     { Header: "Módulo 8", accessor: "MO" },
@@ -348,7 +348,7 @@ const Dashboard = () => {
             <DonutTTChart />
           </Grid>
 
-          <Grid item lg={3}>
+          <Grid item lg={2}>
             <DonutVChart />
           </Grid>
         </Grid>
