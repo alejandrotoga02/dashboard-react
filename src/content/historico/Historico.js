@@ -16,7 +16,15 @@ const Historico = () => {
     { name: "1 de Enero de 2022", fileName: "AccesosVsManiobras01ENE22" },
     { name: "2 de Enero de 2022", fileName: "AccesosVsManiobras02ENE22" },
     { name: "3 de Enero de 2022", fileName: "AccesosVsManiobras03ENE22" },
-    { name: "4 de Enero de 2022", fileName: "AccesosVsManiobras04ENE22" }
+    { name: "4 de Enero de 2022", fileName: "AccesosVsManiobras04ENE22" },
+    { name: "5 de Enero de 2022", fileName: "AccesosVsManiobras05ENE22" },
+    { name: "6 de Enero de 2022", fileName: "AccesosVsManiobras06ENE22" },
+    { name: "7 de Enero de 2022", fileName: "AccesosVsManiobras07ENE22" },
+    { name: "8 de Enero de 2022", fileName: "AccesosVsManiobras08ENE22" },
+    { name: "9 de Enero de 2022", fileName: "AccesosVsManiobras09ENE22" },
+    { name: "10 de Enero de 2022", fileName: "AccesosVsManiobras10ENE22" },
+    { name: "11 de Enero de 2022", fileName: "AccesosVsManiobras11ENE22" },
+    { name: "12 de Enero de 2022", fileName: "AccesosVsManiobras12ENE22" },
   ];
 
   return (
