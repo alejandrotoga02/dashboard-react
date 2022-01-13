@@ -8,7 +8,6 @@ import {
   ByDayChart,
   ByMonthChart,
   DonutPCChart,
-  DonutTTChart,
   DonutVChart,
   LineChart
 } from "./components/charts";
@@ -345,7 +344,6 @@ const Dashboard = () => {
 
           <Grid item lg={3}>
             <DonutPCChart />
-            <DonutTTChart />
           </Grid>
 
           <Grid item lg={2}>
