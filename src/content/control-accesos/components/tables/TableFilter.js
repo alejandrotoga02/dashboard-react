@@ -1,11 +1,11 @@
-import React from "react";
-import { useTable, useFilters, useGlobalFilter } from 'react-table'
+import React, { useEffect } from "react";
+import { useTable, useFilters, useGlobalFilter } from "react-table";
 import MaUTable from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import * as matchSorter from 'match-sorter'
+import * as matchSorter from "match-sorter";
 
 const fuzzyTextFilterFn = (rows, id, filterValue) => {
   return matchSorter(rows, filterValue, { keys: [row => row.values[id]] });
@@ -31,7 +31,7 @@ const DefaultColumnFilter = ({
   );
 };
 
-const TableFilter = ({ data, columns }) => {
+const TableFilter = ({ onChange, data, columns }) => {
   const filterTypes = React.useMemo(
     () => ({
       // Add a new fuzzyTextFilterFn filter type.
@@ -72,6 +72,12 @@ const TableFilter = ({ data, columns }) => {
     useGlobalFilter
   );
 
+  useEffect(() => {
+    if (rows) {
+      onChange(rows);
+    }
+  }, [onChange, rows]);
+
   return (
     <MaUTable {...getTableProps()}>
       <TableHead>
@@ -81,7 +87,7 @@ const TableFilter = ({ data, columns }) => {
               <TableCell {...column.getHeaderProps()}>
                 {column.render("Header")}
                 {/* Render the columns filter UI */}
-                <div>{column.canFilter ? column.render('Filter') : null}</div>
+                <div>{column.canFilter ? column.render("Filter") : null}</div>
               </TableCell>
             ))}
           </TableRow>

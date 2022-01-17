@@ -25,6 +25,9 @@ const Historico = () => {
     { name: "10 de Enero de 2022", fileName: "AccesosVsManiobras10ENE22" },
     { name: "11 de Enero de 2022", fileName: "AccesosVsManiobras11ENE22" },
     { name: "12 de Enero de 2022", fileName: "AccesosVsManiobras12ENE22" },
+    { name: "13 de Enero de 2022", fileName: "AccesosVsManiobras13ENE22" },
+    { name: "14 de Enero de 2022", fileName: "AccesosVsManiobras14ENE22" },
+    { name: "16 de Enero de 2022", fileName: "AccesosVsManiobras16ENE22" }
   ];
 
   return (
@@ -47,7 +50,7 @@ const Historico = () => {
               <TableRow key={name}>
                 <TableCell>{name}</TableCell>
                 <TableCell align="center">
-                  <Link target="_blank" to={`/historic/${fileName}.pdf`}>                   
+                  <Link target="_blank" to={`/historic/${fileName}.pdf`}>
                     <InsertDriveFileIcon />
                   </Link>
                 </TableCell>
