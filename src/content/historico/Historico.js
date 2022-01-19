@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid } from "@material-ui/core";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -27,38 +28,44 @@ const Historico = () => {
     { name: "12 de Enero de 2022", fileName: "AccesosVsManiobras12ENE22" },
     { name: "13 de Enero de 2022", fileName: "AccesosVsManiobras13ENE22" },
     { name: "14 de Enero de 2022", fileName: "AccesosVsManiobras14ENE22" },
-    { name: "16 de Enero de 2022", fileName: "AccesosVsManiobras16ENE22" }
+    { name: "16 de Enero de 2022", fileName: "AccesosVsManiobras16ENE22" },
+    { name: "17 de Enero de 2022", fileName: "AccesosVsManiobras17ENE22" },
+    { name: "18 de Enero de 2022", fileName: "AccesosVsManiobras18ENE22" }
   ];
 
   return (
     <>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" colSpan={2}>
-                <h1>Histórico de Accesos vs Citas y Maniobras</h1>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Fecha</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {files.map(({ name, fileName }) => (
-              <TableRow key={name}>
-                <TableCell>{name}</TableCell>
-                <TableCell align="center">
-                  <Link target="_blank" to={`/historic/${fileName}.pdf`}>
-                    <InsertDriveFileIcon />
-                  </Link>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Grid container justify="center">
+        <Grid item item xs={11}>
+          <TableContainer component={Paper}>
+            <Table aria-label="caption table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center" colSpan={2}>
+                    <h1>Histórico de Accesos vs Citas y Maniobras</h1>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Fecha</TableCell>
+                  <TableCell align="right"></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {files.map(({ name, fileName }) => (
+                  <TableRow key={name}>
+                    <TableCell>{name}</TableCell>
+                    <TableCell align="center">
+                      <Link target="_blank" to={`/historic/${fileName}.pdf`}>
+                        <InsertDriveFileIcon />
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
     </>
   );
 };
