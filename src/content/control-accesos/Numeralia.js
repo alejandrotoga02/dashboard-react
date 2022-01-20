@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNumeralia } from "../../common/reducers/numeraliaReducer";
 import TableFilter from "./components/tables/TableFilter";
 import SelectColumnFilter from "./components/tables/customFilter";
+import { exportCSVFile } from "../../common/utils";
 
 const Numeralia = () => {
   const { data, loading } = useSelector(state => state.numeralia);
@@ -27,7 +28,14 @@ const Numeralia = () => {
   }, []);
 
   const onExport = () => {
-    console.log("data to export", dataExport);
+    const csvHeaders = {
+      ID_Camara: "Camara",
+      Nombre_Garita: "Garita",
+      SubTipo_Lectura: "Tipo",
+      Zona: "Zona",
+      total: "Totales"
+    };
+    exportCSVFile(csvHeaders, dataExport, "accesos-numeralia");
   };
 
   const columns = React.useMemo(

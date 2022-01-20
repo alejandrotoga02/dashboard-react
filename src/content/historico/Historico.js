@@ -36,7 +36,7 @@ const Historico = () => {
   return (
     <>
       <Grid container justify="center">
-        <Grid item item xs={11}>
+        <Grid item xs={11}>
           <TableContainer component={Paper}>
             <Table aria-label="caption table">
               <TableHead>

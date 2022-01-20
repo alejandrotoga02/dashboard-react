@@ -66,9 +66,9 @@ const Layout = () => {
   const classes = useStyles();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    console.log( searchParams.get('token') )
-  },[searchParams])
+  // useEffect(() => {
+  //   console.log( searchParams.get('token') )
+  // },[searchParams])
 
   return (
     <div className={classes.root}>
