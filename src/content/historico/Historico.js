@@ -31,7 +31,8 @@ const Historico = () => {
     { name: "16 de Enero de 2022", fileName: "AccesosVsManiobras16ENE22" },
     { name: "17 de Enero de 2022", fileName: "AccesosVsManiobras17ENE22" },
     { name: "18 de Enero de 2022", fileName: "AccesosVsManiobras18ENE22" },
-    { name: "19 de Enero de 2022", fileName: "AccesosVsManiobras19ENE22" }
+    { name: "19 de Enero de 2022", fileName: "AccesosVsManiobras19ENE22" },
+    { name: "20 de Enero de 2022", fileName: "AccesosVsManiobras20ENE22" }
   ];
 
   return (
