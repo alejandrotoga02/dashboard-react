@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,32 +8,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchHistorico } from "../../common/reducers/historicalReducer";
 
 const Historico = () => {
-  const files = [
-    { name: "30 de Diciembre de 2021", fileName: "AccesosVsManiobras30DIC21" },
-    { name: "31 de Diciembre de 2021", fileName: "AccesosVsManiobras31DIC21" },
-    { name: "1 de Enero de 2022", fileName: "AccesosVsManiobras01ENE22" },
-    { name: "2 de Enero de 2022", fileName: "AccesosVsManiobras02ENE22" },
-    { name: "3 de Enero de 2022", fileName: "AccesosVsManiobras03ENE22" },
-    { name: "4 de Enero de 2022", fileName: "AccesosVsManiobras04ENE22" },
-    { name: "5 de Enero de 2022", fileName: "AccesosVsManiobras05ENE22" },
-    { name: "6 de Enero de 2022", fileName: "AccesosVsManiobras06ENE22" },
-    { name: "7 de Enero de 2022", fileName: "AccesosVsManiobras07ENE22" },
-    { name: "8 de Enero de 2022", fileName: "AccesosVsManiobras08ENE22" },
-    { name: "9 de Enero de 2022", fileName: "AccesosVsManiobras09ENE22" },
-    { name: "10 de Enero de 2022", fileName: "AccesosVsManiobras10ENE22" },
-    { name: "11 de Enero de 2022", fileName: "AccesosVsManiobras11ENE22" },
-    { name: "12 de Enero de 2022", fileName: "AccesosVsManiobras12ENE22" },
-    { name: "13 de Enero de 2022", fileName: "AccesosVsManiobras13ENE22" },
-    { name: "14 de Enero de 2022", fileName: "AccesosVsManiobras14ENE22" },
-    { name: "16 de Enero de 2022", fileName: "AccesosVsManiobras16ENE22" },
-    { name: "17 de Enero de 2022", fileName: "AccesosVsManiobras17ENE22" },
-    { name: "18 de Enero de 2022", fileName: "AccesosVsManiobras18ENE22" },
-    { name: "19 de Enero de 2022", fileName: "AccesosVsManiobras19ENE22" },
-    { name: "20 de Enero de 2022", fileName: "AccesosVsManiobras20ENE22" }
-  ];
+  const dispatch = useDispatch();
+  const { data } = useSelector(state => state.historico);
+
+  useEffect(
+    () => dispatch(fetchHistorico()),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch]
+  );
 
   return (
     <>
@@ -53,13 +39,13 @@ const Historico = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {files.map(({ name, fileName }) => (
-                  <TableRow key={name}>
-                    <TableCell>{name}</TableCell>
+                {data.map(({ label, href }) => (
+                  <TableRow key={label}>
+                    <TableCell>{label}</TableCell>
                     <TableCell align="center">
-                      <Link target="_blank" to={`/historic/${fileName}.pdf`}>
+                      <a target="_blank" href={href} rel="noreferrer">
                         <InsertDriveFileIcon />
-                      </Link>
+                      </a>
                     </TableCell>
                   </TableRow>
                 ))}

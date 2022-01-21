@@ -32,3 +32,14 @@ export const getNumeralics = async params => {
   const data = await axios.get("/access/numeralics", { params });
   return data;
 };
+
+/**
+ * Get historics
+ *
+ * @param {object} params
+ * @returns
+ */
+export const getHistorics = async () => {
+  const data = await axios.get("/access/historics");
+  return data;
+};
