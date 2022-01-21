@@ -28,7 +28,7 @@ const numeraliaSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder
       .addCase(fetchNumeralia.fulfilled, (state, action) => {
-        state.data = [ ...state.data, ...action.payload ];
+        state.data = [...action.payload];
         state.loading = false;
       })
       .addCase(fetchNumeralia.pending, (state, _action) => {
