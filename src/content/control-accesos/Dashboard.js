@@ -13,6 +13,10 @@ import {
 } from "./components/charts";
 import { numberWithCommas } from "../../common/utils";
 import Table from "./components/tables/Table";
+import Button from "@mui/material/Button";
+import RangePicker from "./components/RangePicker";
+import { useDashboard } from "../../common/hooks/useDashboard";
+import { Stack } from "@mui/material";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -61,8 +65,13 @@ const Dashboard = () => {
     totalAccessVehiclesNL,
     totalAccessVehiclesRO,
     totalAccessVehiclesSP,
-    avgTotalAccessVehicles
-  } = entities;
+    avgTotalAccessVehicles,
+    rangeValue,
+    resetRange,
+    rangeIsnotSelected,
+    onDateRangeChange,
+    onAcceptRange
+  } = useDashboard(entities, "all");
 
   useEffect(
     () => dispatch(fetchDashboard()),
@@ -74,7 +83,28 @@ const Dashboard = () => {
     !dashboardLoading &&
     entities && (
       <>
-        {/*  first section */}
+        <Grid container spacing={3} style={{ paddingBottom: 40 }}>
+          <Grid item xs={12} md={12} lg={12}>
+            <Stack direction="row" spacing={2}>
+              <RangePicker
+                startText="Inicio"
+                endText="Fin"
+                value={rangeValue}
+                onChange={onDateRangeChange}
+                onAccept={onAcceptRange}
+              />
+              {!rangeIsnotSelected() && (
+                <Button
+                  variant="outlined"
+                  onClick={resetRange}
+                >
+                  Limpiar filtro
+                </Button>
+              )}
+            </Stack>
+          </Grid>
+        </Grid>
+
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
           <Grid item xs={2} md={2} lg={3}>
             <Card className={classes.card}>
