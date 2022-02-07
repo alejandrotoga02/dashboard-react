@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "../../common/reducers/dashboardReducer";
-import { Card } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 import {
   ByDayChart,
   ByMonthChart,
@@ -22,17 +22,14 @@ const useStyles = makeStyles(() => ({
     border: "none",
     boxShadow: "none"
   },
-  cardTitle: {
-    height: 70,
-    border: "none",
-    boxShadow: "none",
-    textAlign: "center"
+  labelSync: {
+    paddingTop: "20px"
   },
   table: {
-    minWidth: "60vw"
+    minWidth: "50vw"
   },
   table2: {
-    minWidth: "14vw"
+    minWidth: "45vw"
   }
 }));
 
@@ -64,7 +61,7 @@ const Dashboard = () => {
       <>
         <Grid container spacing={3} style={{ paddingBottom: 40 }}>
           <Grid item xs={12} md={12} lg={12}>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} justifyContent={"flex-end"}>
               <RangePicker
                 startText="Inicio"
                 endText="Fin"
@@ -77,6 +74,14 @@ const Dashboard = () => {
                   Limpiar filtro
                 </Button>
               )}
+
+              <Typography
+                variant="caption"
+                component="div"
+                className={classes.labelSync}
+              >
+                Última actualización: {lastSyncAt}
+              </Typography>
             </Stack>
           </Grid>
         </Grid>
@@ -121,6 +126,7 @@ const Dashboard = () => {
             <DashSection
               title="Personal"
               data={TT}
+              chunk={5}
               tableClass={classes.table2}
             />
           </Grid>

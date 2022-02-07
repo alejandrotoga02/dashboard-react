@@ -1,41 +1,28 @@
-import { useEffect, useState } from "react";
 import { CardContent, Grid, Typography } from "@material-ui/core";
 import { numberWithCommas } from "../../../common/utils";
 import Table from "./tables/Table";
-import { forEachObjIndexed } from "ramda";
+import { useColumns, useMultipleRow } from "../useDashTable";
 
-const useColumns = data => {
-  const [columns, setColumns] = useState([]);
-  const [records, setRecords] = useState([]);
-
-  useEffect(() => {
-    if (data) {
-      const headers = [];
-      const concatValue = (_value, key) => {
-        headers.push({
-          Header: key,
-          accessor: key
-        });
-      };
-      forEachObjIndexed(concatValue, data.garitas);
-      setColumns(headers)
-    }
-  }, [data]);
-
-  useEffect(() => {
-    if (data) {
-      setRecords([{ ...data.garitas }]);
-    }
-  }, [data]);
-
-  return { columns, records };
+const MultipleTable = ({ data, tableClass, chunk }) => {
+  const records = useMultipleRow(data, chunk);
+  return (
+    records &&
+    records.map((record, idx) => (
+      <SimpleTable key={idx} data={record} tableClass={tableClass} />
+    ))
+  );
 };
 
-const DashSection = ({ title, data, tableClass }) => {
-  console.log('data', data);
-  
+const SimpleTable = ({ data, tableClass }) => {
   const { columns, records } = useColumns(data);
+  return (
+    <>
+      <Table className={tableClass} columns={columns} data={records} />
+    </>
+  );
+};
 
+const DashSection = ({ title, data, tableClass, chunk = 0 }) => {
   return (
     <>
       <CardContent style={{ background: "#D3D3D3" }}>
@@ -74,7 +61,15 @@ const DashSection = ({ title, data, tableClass }) => {
       </CardContent>
 
       <CardContent>
-        <Table className={tableClass} columns={columns} data={records} />
+        {chunk === 0 ? (
+          <SimpleTable data={data} tableClass={tableClass} />
+        ) : (
+          <MultipleTable
+            data={data.garitas}
+            tableClass={tableClass}
+            chunk={chunk}
+          />
+        )}
       </CardContent>
     </>
   );
