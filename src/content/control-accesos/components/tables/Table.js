@@ -3,15 +3,8 @@ import React from "react";
 import { useTable } from "react-table";
 import { numberWithCommas } from "../../../../common/utils";
 
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: "20vw"
-//   }
-// });
 
 const Table = ({ cellClass = "h4", columns, data, ...props }) => {
-  // const classes = useStyles();
-  // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
     getTableBodyProps,

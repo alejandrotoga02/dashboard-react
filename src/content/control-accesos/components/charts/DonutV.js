@@ -3,24 +3,24 @@ import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import useDonutChart from "../../../../common/hooks/useDonutChart";
 
-const selectDonutV = createSelector(
+const selectGaritas = createSelector(
   state => state.dashboard,
-  dashboard => dashboard.entities.donutV
+  dashboard => dashboard.entities.PV.garitas
 );
 
 const DonutVChart = () => {
-  const donutV = useSelector(selectDonutV);
-  const state = useDonutChart(donutV,{
+  const data = useSelector(selectGaritas);
+  const { options, series } = useDonutChart(data, {
     text: "Accesos de Vehículos ligeros"
   });
 
   return (
     <div id="chart-V">
       <ReactApexChart
-        options={state.options}
-        series={state.series}
+        options={options}
+        series={series}
         type="donut"
-        width={410}
+        width={350}
       />
     </div>
   );

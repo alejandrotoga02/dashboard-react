@@ -3,29 +3,22 @@ import { getGraphs, getStatistics } from "../../services/AcessService";
 
 const initialState = {
   entities: {
-    totalAccessNP: 0,
-    totalAccessPC: 0,
-    avgTotalAccessPC: 0,
-    totalAccessPV: 0,
-    totalAccessRO: 0,
-    totalAccessPersonal: 0,
-    totalAccessPersonalB1: 0,
-    totalAccessPersonalB2: 0,
-    totalAccessPersonalB3: 0,
-    totalAccessPersonalCE: 0,
-    totalAccessPersonalFL: 0,
-    totalAccessPersonalGP: 0,
-    totalAccessPersonalMO: 0,
-    totalAccessPersonalNE: 0,
-    totalAccessPersonalRO: 0,
-    totalAccessPersonalSP: 0,
-    avgTotalAccessPersonal: 0,
-    totalAccessTR: 0,
-    totalAccessVehicles: 0,
-    avgTotalAccessVehicles: 0,
-    totalAccessVehiclesNL: 0,
-    totalAccessVehiclesRO: 0,
-    totalAccessVehiclesSP: 0
+    PC: {
+      avg: 0,
+      total: 0,
+      garitas: {}
+    },
+    PV: {
+      avg: 0,
+      total: 0,
+      garitas: {}
+    },
+    TT: {
+      avg: 0,
+      total: 0,
+      garitas: {}
+    },
+    lastSyncAt: ""
   },
   dashboardLoading: false
 };
@@ -55,7 +48,7 @@ const dashboardSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder
       .addCase(fetchDashboard.fulfilled, (state, action) => {
-        state.entities = { ...state.entities, ...action.payload };
+        state.entities = { ...action.payload };
         state.dashboardLoading = false;
       })
       .addCase(fetchDashboard.pending, (state, _action) => {

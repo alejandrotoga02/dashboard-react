@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { keys, map, values } from "ramda";
+import { keys, values } from "ramda";
 const initialStruct = {
   series: [],
   options: {
@@ -32,7 +32,7 @@ export const useDonutChart = (data, titleProps) => {
   useEffect(() => {
     setStruct(state => ({
       ...state,
-      series: map(item => item?.value, values(data)),
+      series: values(data),
       options: {
         ...state.options,
         title: {...titleProps},
