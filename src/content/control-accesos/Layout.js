@@ -76,12 +76,14 @@ const Layout = () => {
     const tokn = searchParams.get("token");
     if (tokn) {
       localStorage.setItem("token", tokn);
-      dispatch(fetchAuthentication());
     }
+    setTimeout(() => {
+      dispatch(fetchAuthentication());
+    }, 100);
   }, [searchParams, dispatch]);
 
   return !loading ? (
-    !data.error ? (
+    !data?.error ? (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
