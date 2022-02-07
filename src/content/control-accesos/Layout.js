@@ -1,13 +1,15 @@
-/* eslint-disable-next-line */
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-/* eslint-disable-next-line */
 import { Link, Outlet, useSearchParams } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAuthentication } from "../../common/reducers/authenticationReducer";
 
 const drawerWidth = 240;
 
@@ -66,41 +68,61 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = () => {
   const classes = useStyles();
-  /* eslint-disable-next-line */
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const { loading, data } = useSelector(state => state.authentication);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log( searchParams.get('token') )
-  // },[searchParams])
+  useEffect(() => {
+    const tokn = searchParams.get("token");
+    if (tokn) {
+      localStorage.setItem("token", tokn);
+      dispatch(fetchAuthentication());
+    }
+  }, [searchParams, dispatch]);
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Accesos al Puerto
-          </Typography>
+  return !loading ? (
+    !data.error ? (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Accesos al Puerto
+            </Typography>
 
-          <Button component={Link} color="inherit" to="/accesos">
-            General
-          </Button>
-          <Button component={Link} color="inherit" to="/accesos/norte">
-            Norte
-          </Button>
-          <Button component={Link} color="inherit" to="/accesos/sur">
-            Sur
-          </Button>
-          <Button component={Link} color="inherit" to="/accesos/numeralia">
-            Numeralia
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <main className={classes.content}>
-        <Container maxWidth={false} className={classes.container}>
-          <Outlet />
-        </Container>
-      </main>
-    </div>
+            <Button component={Link} color="inherit" to="/accesos">
+              General
+            </Button>
+            <Button component={Link} color="inherit" to="/accesos/norte">
+              Norte
+            </Button>
+            <Button component={Link} color="inherit" to="/accesos/sur">
+              Sur
+            </Button>
+            <Button component={Link} color="inherit" to="/accesos/numeralia">
+              Numeralia
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <main className={classes.content}>
+          <Container maxWidth={false} className={classes.container}>
+            <Outlet />
+          </Container>
+        </main>
+      </div>
+    ) : (
+      <Typography variant="h4" component="div">
+        Unauthorized
+      </Typography>
+    )
+  ) : (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+    >
+      <CircularProgress />
+    </Box>
   );
 };
 
