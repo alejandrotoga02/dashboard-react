@@ -3,48 +3,27 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboard } from "../../common/reducers/dashboardReducer";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 import { ByDayChart, ByMonthChart, LineChart } from "./components/charts";
-import { numberWithCommas } from "../../common/utils";
 import Button from "@mui/material/Button";
 import RangePicker from "./components/RangePicker";
 import { useDashboard } from "../../common/hooks/useDashboard";
 import { Stack } from "@mui/material";
+import DashSectionNorte from "./components/SectionNorte";
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column"
-  },
-  title: {
-    fontWeight: "normal",
-    fontSize: "1.4em",
-    marginBottom: 0
-  },
-  subTitle: {
-    fontWeight: "normal",
-    fontSize: "1em",
-    marginBottom: 0
-  },
+const useStyles = makeStyles(() => ({
   card: {
-    maxHeight: 200,
     border: "none",
     boxShadow: "none"
   },
-  cardNoLine: {
-    border: "none",
-    boxShadow: "none"
+  labelSync: {
+    paddingTop: "20px"
   },
-  cardTitle: {
-    height: 70,
-    border: "none",
-    boxShadow: "none",
-    textAlign: "center"
+  table: {
+    minWidth: "50vw"
   },
-  itemLg: {
-    maxWidth: "16%"
+  table2: {
+    minWidth: "45vw"
   }
 }));
 
@@ -54,12 +33,10 @@ const DashboardNorte = () => {
   const dispatch = useDispatch();
 
   const {
-    totalAccessPC,
-    avgTotalAccessPC,
-    totalAccessPersonal,
-    avgTotalAccessPersonal,
-    totalAccessVehicles,
-    avgTotalAccessVehicles,
+    PC,
+    PV,
+    TT,
+    lastSyncAt,
     rangeValue,
     resetRange,
     rangeIsnotSelected,
@@ -79,12 +56,11 @@ const DashboardNorte = () => {
   );
 
   return (
-    !dashboardLoading &&
-    entities && (
+    !dashboardLoading && (
       <>
         <Grid container spacing={3} style={{ paddingBottom: 40 }}>
           <Grid item xs={12} md={12} lg={12}>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} justifyContent={"flex-end"}>
               <RangePicker
                 startText="Inicio"
                 endText="Fin"
@@ -93,70 +69,30 @@ const DashboardNorte = () => {
                 onAccept={onAcceptRange}
               />
               {!rangeIsnotSelected() && (
-                <Button
-                  variant="outlined"
-                  onClick={resetRange}
-                >
+                <Button variant="outlined" onClick={resetRange}>
                   Limpiar filtro
                 </Button>
               )}
+
+              <Typography
+                variant="caption"
+                component="div"
+                className={classes.labelSync}
+              >
+                Última actualización: {lastSyncAt}
+              </Typography>
             </Stack>
           </Grid>
         </Grid>
 
         <Grid container spacing={1} style={{ paddingBottom: 40 }}>
-          <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                  style={{ color: "#004C00", fontWeight: "bolder" }}
-                >
-                  Autotransporte de carga
-                </Typography>
-
-                <Typography
-                  variant="h6"
-                  color="div"
-                  style={{ color: "#004C00" }}
-                >
-                  Nortes Pesados
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardTitle}>
-              <CardContent
-                style={{ background: "#D3D3D3", fontWeight: "bolder" }}
-              >
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  component="div"
-                  style={{ color: "#004C00" }}
-                >
-                  {numberWithCommas(totalAccessPC)}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} md={1} lg={1}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
-                <Typography
-                  // gutterBottom
-                  variant="caption"
-                  component="div"
-                  style={{ color: "#004C00" }}
-                >
-                  Promedio diario {numberWithCommas(avgTotalAccessPC)}
-                </Typography>
-              </CardContent>
+          <Grid item xs={12} md={6} lg={6}>
+            <Card className={classes.card}>
+              <DashSectionNorte
+                title="Autotransporte de carga"
+                subtitle={"Nortes Pesados"}
+                data={PC}
+              />
             </Card>
           </Grid>
 
@@ -170,63 +106,12 @@ const DashboardNorte = () => {
 
         {/* secod section grays */}
         <Grid container spacing={1}>
-          <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                  style={{ color: "#004C00", fontWeight: "bolder" }}
-                >
-                  Vehículos utilitarios
-                </Typography>
-
-                <Typography
-                  variant="h6"
-                  color="div"
-                  style={{ color: "#004C00" }}
-                >
-                  Nortes Ligeros
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardTitle}>
-              <CardContent
-                style={{ background: "#D3D3D3", fontWeight: "bolder" }}
-              >
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  component="div"
-                  style={{ color: "#004C00" }}
-                >
-                  {numberWithCommas(totalAccessVehicles)}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} md={1} lg={1}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  style={{
-                    color: "#004C00",
-                    fontSize: "1em",
-                    lineHeight: "normal"
-                  }}
-                >
-                  Promedio diario {numberWithCommas(avgTotalAccessVehicles)}
-                </Typography>
-              </CardContent>
-            </Card>
+          <Grid item xs={12} md={6} lg={6}>
+            <DashSectionNorte
+              title="Vehículos utilitarios"
+              subtitle={"Nortes Ligeros"}
+              data={PV}
+            />
           </Grid>
 
           <Grid item lg={6}>
@@ -236,60 +121,12 @@ const DashboardNorte = () => {
 
         {/* third section grays */}
         <Grid container spacing={1}>
-          <Grid item xs={2} md={2} lg={3}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3", padding: 0 }}>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  style={{ color: "#004C00", fontWeight: "bolder" }}
-                >
-                  Personal
-                </Typography>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  style={{ color: "#004C00" }}
-                >
-                  Norte Elevado
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} md={2} lg={2}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  component="div"
-                  style={{ color: "#004C00", fontWeight: "bolder" }}
-                >
-                  {numberWithCommas(totalAccessPersonal)}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={2} md={1} lg={1}>
-            <Card className={classes.cardTitle}>
-              <CardContent style={{ background: "#D3D3D3" }}>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  style={{
-                    color: "#004C00",
-                    fontSize: "1em",
-                    lineHeight: "normal"
-                  }}
-                >
-                  Promedio diario {numberWithCommas(avgTotalAccessPersonal)}
-                </Typography>
-              </CardContent>
-            </Card>
+          <Grid item xs={12} md={6} lg={6}>
+            <DashSectionNorte
+              title="Personal"
+              subtitle={"Norte Elevado"}
+              data={TT}
+            />
           </Grid>
         </Grid>
       </>
