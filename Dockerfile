@@ -5,7 +5,7 @@ COPY . /app
 USER root
 
 RUN npm install -g yarn
-RUN chmod -R ug+rwx /app && yarn install && yarn build
+RUN chmod -R ug+rwx /app && yarn install --network-timeout 100000 && yarn build
 
 #------------------------------------------------------------
 FROM registry.access.redhat.com/ubi8/nginx-118
