@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { verifyPermissions } from "../../services/PisService";
 
 const initialState = {
-  data: {},
+  data: {
+    error:  true
+  },
   loading: false
 };
 

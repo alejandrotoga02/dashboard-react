@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link, Outlet, useSearchParams } from "react-router-dom";
+import { Link, Outlet, useSearchParams, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -9,68 +8,19 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAuthentication } from "../../common/reducers/authenticationReducer";
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    // display: "flex",
-  },
-  title: {
-    flexGrow: 1
-  },
-  drawerPaper: {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  drawerPaperClose: {
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9)
-    }
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    // content which is class of main needs to be flex and column direction
-    display: "flex",
-    flexDirection: "column",
-    flexGrow: 1,
-    height: "100%",
-    overflow: "100%"
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
-  },
-  fixedHeight: {
-    height: 340
-  },
-  // added the footer class
-  footer: {
-    padding: theme.spacing(2),
-    marginTop: "auto",
-    backgroundColor: "white",
-    // just this item, push to bottom
-    alignSelf: "flex-end"
-  }
-}));
+import { fetchAuthentication } from "../../../../common/reducers/authenticationReducer";
+import { useStyles } from "./styles";
 
 const Layout = () => {
   const classes = useStyles();
   const [searchParams] = useSearchParams();
   const { loading, data } = useSelector(state => state.authentication);
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log("location", location);
+  }, [location]);
 
   useEffect(() => {
     const tokn = searchParams.get("token");
@@ -83,7 +33,7 @@ const Layout = () => {
   }, [searchParams, dispatch]);
 
   return !loading ? (
-    !data?.error ? (
+    !data?.error && data?.esAutoridad ? (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>

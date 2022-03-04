@@ -16,7 +16,7 @@ const DashSectionNorte = ({ title, subtitle, data }) => {
               {title}
             </Typography>
 
-            <Typography variant="h6" color="div" style={{ color: "#004C00" }}>
+            <Typography variant="h6" component="div" style={{ color: "#004C00" }}>
               {subtitle}
             </Typography>
           </Grid>

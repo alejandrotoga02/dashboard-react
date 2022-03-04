@@ -90,7 +90,7 @@ const DashboardNorte = () => {
             <Card className={classes.card}>
               <DashSectionNorte
                 title="Autotransporte de carga"
-                subtitle={"Nortes Pesados"}
+                subtitle={"Norte Pesados"}
                 data={PC}
               />
             </Card>
@@ -109,7 +109,7 @@ const DashboardNorte = () => {
           <Grid item xs={12} md={6} lg={6}>
             <DashSectionNorte
               title="Vehículos utilitarios"
-              subtitle={"Nortes Ligeros"}
+              subtitle={"Norte Ligeros"}
               data={PV}
             />
           </Grid>

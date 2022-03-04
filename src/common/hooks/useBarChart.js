@@ -14,13 +14,13 @@ const initialStruct = {
       height: 350,
       type: "bar",
       zoom: {
-        enabled: false,
+        enabled: false
       }
     },
     plotOptions: {
       bar: {
         borderRadius: 0,
-        columnWidth: "80%",
+        columnWidth: "70%",
         dataLabels: {
           position: "top"
         }
@@ -34,7 +34,10 @@ const initialStruct = {
     },
     title: {
       text: "",
-      align: "left"
+      align: "left",
+      style: {
+        fontSize: "12px"
+      }
     },
     stroke: {
       width: 2

@@ -15,7 +15,7 @@ const ByMonthChart = () => {
   const dispatch = useDispatch();
   const barChartByMonth = useSelector(selectBarChartByMonth);
   const state = useBarChart(barChartByMonth, "Accesos", {
-    text: "Accesos por mes",
+    text: "Accesos por mes de autotransporte de carga",
     align: "left"
   },
   {
