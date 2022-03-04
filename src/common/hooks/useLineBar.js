@@ -3,7 +3,7 @@ import { keys, values } from "ramda";
 const initialStruct = {
   series: [
     {
-      name: "Accesos",
+      name: "",
       data: []
     }
   ],
@@ -31,14 +31,13 @@ const initialStruct = {
       text: "Accesos promedio de Autotransporte de carga por hora del día",
       align: "left"
     },
-
     xaxis: {
       categories: []
     }
   }
 };
 
-export const useLineBar = data => {  
+export const useLineBar = (data, serieName, titleProps) => {
   const [struct, setStruct] = useState(initialStruct);
 
   useEffect(() => {
@@ -47,11 +46,13 @@ export const useLineBar = data => {
       series: [
         {
           ...state.series[0],
+          name: serieName,
           data: values(data)
         }
       ],
       options: {
         ...state.options,
+        title: {...titleProps},
         xaxis: {
           ...state.options.xaxis,
           categories: keys(data)

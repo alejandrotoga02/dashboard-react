@@ -18,9 +18,18 @@ const Layout = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  useEffect(() => {
-    console.log("location", location);
-  }, [location]);
+  const title = React.useMemo(() => {
+    const thePath  = location.pathname;
+    const lastPart =  thePath.substring(thePath.lastIndexOf('/') + 1);
+    const mapper = {
+      'accesos': 'General',
+      'norte': 'Norte',
+      'sur': 'Sur',
+      'numeralia': 'Numeralia',
+    }
+    return ` - ${ mapper[lastPart] || ''}`
+  },[location])
+
 
   useEffect(() => {
     const tokn = searchParams.get("token");
@@ -33,12 +42,12 @@ const Layout = () => {
   }, [searchParams, dispatch]);
 
   return !loading ? (
-    !data?.error && data?.esAutoridad ? (
+    !data?.error ? (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Accesos al Puerto
+              Accesos al puerto {title}
             </Typography>
 
             <Button component={Link} color="inherit" to="/accesos">

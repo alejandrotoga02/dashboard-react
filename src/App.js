@@ -32,8 +32,8 @@ const App = () => {
       </Route>
       <Route path="hechos" element={<LayoutHecho />}>
         <Route index element={<Hechos />} />
-        {/* <Route path="norte" element={<DashboardNorte />} /> */}
-        {/* <Route path="sur" element={<DashboardSur />} /> */}
+        <Route path="norte" element={<Hechos />} />
+        <Route path="sur" element={<Hechos />} />
       </Route>
       <Route path="frames" element={<Layout />}>
         <Route index element={<General />} />

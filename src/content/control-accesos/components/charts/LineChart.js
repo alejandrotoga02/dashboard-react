@@ -10,7 +10,9 @@ const selectLineChartByHour = createSelector(
 
 const LineChart = () => {
   const lineChartByHour = useSelector(selectLineChartByHour);
-  const state = useLineBar(lineChartByHour);
+  const state = useLineBar(lineChartByHour, "Accesos", {
+    text: "Accesos promedio de Autotransporte de carga por hora del día"
+  });
 
   return (
     <div id="chart2">
