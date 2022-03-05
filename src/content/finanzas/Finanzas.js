@@ -70,7 +70,8 @@ const Finanzas = () => {
                 <Grid item xs={5}>
                   <Donut
                     data={{ transbordo: 130781, Altura: 232951 }}
-                    text="Tipo de INGRESO"
+                    text="TIPO DE INGRESO"
+                    width={400}
                   />
                 </Grid>
                 <Grid item xs={5}>
@@ -82,7 +83,8 @@ const Finanzas = () => {
                       CONTECON: 9100,
                       SSA: 192000
                     }}
-                    text="Cliente"
+                    text="CLIENTE"
+                    width={400}
                   />
                 </Grid>
               </Grid>

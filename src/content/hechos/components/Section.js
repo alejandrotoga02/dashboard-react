@@ -1,7 +1,7 @@
 import React from "react";
 import { CardContent, Grid, Typography } from "@material-ui/core";
 import Table from "./Table";
-import { useTable } from "../useTable";
+import { useTable } from "../../../common/hooks/useTable";
 
 const SimpleTable = ({ data, columnsArr }) => {
   const { columns, records } = useTable(data, columnsArr);
