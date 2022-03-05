@@ -12,6 +12,7 @@ import {
 } from "./content/hechos"
 import General from "./content/frames/General";
 import Historico from "./content/historico/Historico";
+import { Finanzas, Layout as LayoutFinanzas } from "./content/finanzas";
 
 const App = () => {
   return (
@@ -34,6 +35,9 @@ const App = () => {
         <Route index element={<Hechos />} />
         <Route path="norte" element={<Hechos />} />
         <Route path="sur" element={<Hechos />} />
+      </Route>
+      <Route path="finanzas" element={<LayoutFinanzas />}>
+        <Route index element={<Finanzas />} />
       </Route>
       <Route path="frames" element={<Layout />}>
         <Route index element={<General />} />
