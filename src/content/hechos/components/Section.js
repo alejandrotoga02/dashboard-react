@@ -12,14 +12,14 @@ const SimpleTable = ({ data, columnsArr }) => {
   );
 };
 
-const DashSection = ({ title, data }) => {
+const DashSection = ({ title, variant = "h5", data }) => {
   const columns = ["name", "value"];
   return (
     <>
       <CardContent style={{ background: "#D3D3D3" }}>
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant={variant} component="div">
               {title}
             </Typography>
           </Grid>
