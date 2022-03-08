@@ -3,7 +3,7 @@ import { Card, makeStyles } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import ContainersSection from "./components/Containers";
 import Donut from "./components/Donut";
-import LineBarChart from "./components/Bar";
+import IngressByMonth from "./components/IngressByMonth";
 import DetailTable from "./components/DetailTable";
 
 const useStyles = makeStyles(() => ({
@@ -18,20 +18,80 @@ const Finanzas = () => {
 
   return (
     <>
-      <Grid container spacing={5} columns={10}>
-        <Grid item xs={4} md={4} lg={4}>
+      <Grid container spacing={4} columns={12}>
+        <Grid item xs={6} md={6} lg={6}>
           <Card className={classes.card}>
             <ContainersSection title="DETALLE DE INGRESOS" variant="h6">
               <Grid container spacing={0}>
                 <Grid item lg={12}>
                   <DetailTable
-                    columnsArr={["name", "value"]}
-                    data={{
-                      "CESION PARCIA DE DERECHOS": "$100,000.00",
-                      PUERTO: "$100,000.00",
-                      "CODIGO PBIP": "$100,000.00",
-                      MUELLAJE: "$100,000.00"
-                    }}
+                    data={[
+                      {
+                        tipo_ingreso: "CESION PARCIA DE DERECHOS",
+                        sub_tipo_ingreso: "CESION PARCIA DE DERECHOS",
+                        total: "$2,030,686,242"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "PUERTO",
+                        total: "$751,532,790"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "CODIGO PBIP",
+                        total: "$140,430,511"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "MUELLAJE",
+                        total: "$133,656,437"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "ATRAQUE",
+                        total: "$133,623,168"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "ALMACENAJE",
+                        total: "$106,137,039"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "INFRAESTRUCTURA",
+                        total: "$1,092,235"
+                      },
+                      {
+                        tipo_ingreso: "INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "PASAJEROS",
+                        total: "$100,216"
+                      },
+                      {
+                        tipo_ingreso: "PRESTADORES DE SERVICIOS",
+                        sub_tipo_ingreso: "PASEJEROS DE SERVICIOS",
+                        total: "$223,544,168"
+                      },
+                      {
+                        tipo_ingreso: "ARRENDAMIENTO",
+                        sub_tipo_ingreso: "ARRENDAMIENTO",
+                        total: "$30,803,908"
+                      },
+                      {
+                        tipo_ingreso: "OTROS INGRESOS",
+                        sub_tipo_ingreso: "OTROS INGRESOS",
+                        total: "$8,198,068"
+                      },
+                      {
+                        tipo_ingreso: "ESTADO DE OTROS INGRESOS",
+                        sub_tipo_ingreso: "OTROS INGRESOS",
+                        total: "-$494,708"
+                      },
+                      {
+                        tipo_ingreso: "DESCUENTO DE INFRAESTRUCTURA",
+                        sub_tipo_ingreso: "INFRAESTRUCTURA",
+                        total: "-$176,917,128"
+                      }
+                    ]}
                   />
                 </Grid>
               </Grid>
@@ -44,18 +104,25 @@ const Finanzas = () => {
             <ContainersSection title="INGRESOS POR MES" variant="h6">
               <Grid container spacing={0}>
                 <Grid item lg={12}>
-                  <LineBarChart
+                  <IngressByMonth
                     data={{
-                      "Septiembre-2021": 35022,
-                      "Octubre-2021": 81705,
-                      "Noviembre-2021": 87839,
-                      "Diciembre-2021": 79592,
-                      "Enero-2022": 74927,
-                      "Febrero-2022": 65673,
-                      "Marzo-2022": 5824
+                      "Ene-21": "171.31M",
+                      "Feb-21": "50.24M",
+                      "Mar-21": "166.46M",
+                      "May-21": "122.84M",
+                      "Jun-21": "166.2M",
+                      "Jul-21": "181.16M",
+                      "Ago-21": "183.44M",
+                      "Sep-21": "180.69M",
+                      "Oct-21": "207.3M",
+                      "Nov-21": "202.63M",
+                      "Dic-21": "208.13M",
+                      "Ene-22": "232.17M",
+                      "Feb-22": "268.48M",
+                      "Mar-22": "120.74M"
                     }}
                     serieName="movimientos"
-                    text="Movimiento de contenedores por mes"
+                    text=""
                   />
                 </Grid>
               </Grid>
@@ -66,25 +133,35 @@ const Finanzas = () => {
               title="DISTRIBUCIÓN DE LOS INGRESOS POR:"
               variant="h6"
             >
-              <Grid container columns={10} spacing={0}>
+              <Grid container columns={12} spacing={2}>
                 <Grid item xs={5}>
                   <Donut
-                    data={{ transbordo: 130781, Altura: 232951 }}
+                    data={{
+                      "PRESTADORES DE SERVICIO": 192710490,
+                      "CESIÓN PARCIAL DE DERECHOS": 1750591588,
+                      INFRAESTRUCTURA: 647901144,
+                      ARRENDAMIENTO: 26555093
+                    }}
                     text="TIPO DE INGRESO"
-                    width={400}
+                    width={450}
                   />
                 </Grid>
                 <Grid item xs={5}>
                   <Donut
                     data={{
-                      Otros: 25300,
-                      OCUPA: 19400,
-                      TIMSA: 34000,
-                      CONTECON: 9100,
-                      SSA: 192000
+                      "CONTECON MANZANILLO S.A. DE C.": 887103770,
+                      "SSA MEXICO S.A. DE C.V.": 723896425,
+                      "TERMINAL INTERNACIONAL DE": 171285681,
+                      "OPERADORA DE LA CUENCA DEL PAC": 111652389,
+                      "FRIGORIFICO DE MANZANILLO S.A.": 81438695,
+                      "TERMINAL MARITIMA HAZESA": 71473483,
+                      "MEDITERRANEAN SHIPPING COMPANY": 30154568,
+                      "CMACGM MEXICO S.A. DE C.V.": 22876545,
+                      "HAPAG-LLOYD MEXICO S.A.DE C.V.": 19739654,
+                      Otros: 352247060
                     }}
                     text="CLIENTE"
-                    width={400}
+                    width={480}
                   />
                 </Grid>
               </Grid>
@@ -92,8 +169,6 @@ const Finanzas = () => {
           </Card>
         </Grid>
       </Grid>
-
-      <Grid container spacing={1} columns={16}></Grid>
     </>
   );
 };

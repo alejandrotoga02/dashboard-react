@@ -26,19 +26,7 @@ const initialStruct = {
         }
       }
     },
-    dataLabels: {
-      enabled: true,
-      formatter: val => {
-        return numberWithCommas(val);
-      }
-    },
-    title: {
-      text: "",
-      align: "left",
-      style: {
-        fontSize: "12px"
-      }
-    },
+    title: {},
     stroke: {
       width: 2
     },
@@ -66,6 +54,7 @@ const useBarChart = (
   accumulated,
   serieName = "",
   titleProps,
+  dataLabels = {},
   customEvents = {}
 ) => {
   const [struct, setStruct] = useState(initialStruct);
@@ -87,6 +76,7 @@ const useBarChart = (
           events: customEvents
         },
         title: titleProps,
+        dataLabels: dataLabels,
         xaxis: {
           ...state.options.xaxis,
           categories: keys(accumulated)
