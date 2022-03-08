@@ -51,7 +51,7 @@ const Hechos = () => {
       </Grid>
       <Grid container spacing={2} style={{ paddingBottom: 40 }}>
         <Grid item xs={3} md={3} lg={3}>
-          <Card className={classes.card}>
+          <Card className={classes.card} style={{ height: "480px" }}>
             <Section
               title="Numeralia de HECHOS"
               variant="h6"
@@ -67,7 +67,7 @@ const Hechos = () => {
           </Card>
         </Grid>
         <Grid item xs={9} md={9} lg={9}>
-          <Card className={classes.card}>
+          <Card className={classes.card} style={{ height: "480px" }}>
             <ContainersSection title="Movimiento de TEUs por mes" variant="h6">
               <Grid container spacing={0}>
                 <Grid item lg={12}>
@@ -82,7 +82,7 @@ const Hechos = () => {
                       "Marzo-2022": 5824
                     }}
                     serieName="movimientos"
-                    text="Movimiento TEUs por mes"
+                    text=""
                   />
                 </Grid>
               </Grid>

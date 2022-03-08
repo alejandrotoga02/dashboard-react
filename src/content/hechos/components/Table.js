@@ -4,7 +4,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useTable } from "react-table";
 import { numberWithCommas } from "../../../common/utils";
 
@@ -13,6 +13,9 @@ const useStyles = makeStyles(() => ({
     color: "#007fff",
     fontSize: "1.2em",
     fontWeight: "bold"
+  },
+  right: {
+    textAlign: "right"
   }
 }));
 
@@ -51,7 +54,12 @@ const Table = ({ columns, data }) => {
             <TableRow {...row.getRowProps()}>
               {row.cells.map(cell => {
                 return (
-                  <TableCell {...cell.getCellProps()} className={classes.td}>
+                  <TableCell
+                    {...cell.getCellProps()}
+                    className={`${classes.td} ${
+                      cell.column.Header === "value" ? classes.right : ""
+                    }`}
+                  >
                     {cell.render(({ value }) => {
                       return numberWithCommas(value);
                     })}

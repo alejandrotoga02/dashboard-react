@@ -108,11 +108,13 @@ const Dashboard = () => {
         {/* secod section grays */}
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} lg={6}>
-            <DashSection
-              title="Vehículos utilitarios"
-              data={PV}
-              tableClass={classes.table}
-            />
+            <Card className={classes.card}>
+              <DashSection
+                title="Vehículos utilitarios"
+                data={PV}
+                tableClass={classes.table}
+              />
+            </Card>
           </Grid>
 
           <Grid item lg={6}>
@@ -123,12 +125,14 @@ const Dashboard = () => {
         {/* third section grays */}
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} lg={6}>
-            <DashSection
-              title="Personal"
-              data={TT}
-              chunk={5}
-              tableClass={classes.table2}
-            />
+            <Card className={classes.card}>
+              <DashSection
+                title="Personal"
+                data={TT}
+                chunk={5}
+                tableClass={classes.table2}
+              />
+            </Card>
           </Grid>
 
           <Grid item lg={3}>
