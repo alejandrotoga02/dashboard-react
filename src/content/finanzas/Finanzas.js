@@ -18,8 +18,8 @@ const Finanzas = () => {
 
   return (
     <>
-      <Grid container spacing={4} columns={12}>
-        <Grid item xs={6} md={6} lg={6}>
+      <Grid container spacing={2}>
+        <Grid item xs={5} md={5} lg={5}>
           <Card className={classes.card}>
             <ContainersSection title="DETALLE DE INGRESOS" variant="h6">
               <Grid container spacing={0}>
@@ -68,7 +68,7 @@ const Finanzas = () => {
                       },
                       {
                         tipo_ingreso: "PRESTADORES DE SERVICIOS",
-                        sub_tipo_ingreso: "PASEJEROS DE SERVICIOS",
+                        sub_tipo_ingreso: "PRESTADORES DE SERVICIOS",
                         total: "$223,544,168"
                       },
                       {
@@ -82,7 +82,7 @@ const Finanzas = () => {
                         total: "$8,198,068"
                       },
                       {
-                        tipo_ingreso: "ESTADO DE OTROS INGRESOS",
+                        tipo_ingreso: "EGRESOS DE OTROS INGRESOS",
                         sub_tipo_ingreso: "OTROS INGRESOS",
                         total: "-$494,708"
                       },
@@ -99,7 +99,7 @@ const Finanzas = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={6} md={6} lg={6}>
+        <Grid item xs={7} md={7} lg={7}>
           <Card className={classes.card}>
             <ContainersSection title="INGRESOS POR MES" variant="h6">
               <Grid container spacing={0}>
@@ -121,7 +121,7 @@ const Finanzas = () => {
                       "Feb-22": "268.48M",
                       "Mar-22": "120.74M"
                     }}
-                    serieName="movimientos"
+                    serieName="ingresos"
                     text=""
                   />
                 </Grid>
@@ -133,8 +133,8 @@ const Finanzas = () => {
               title="DISTRIBUCIÓN DE LOS INGRESOS POR:"
               variant="h6"
             >
-              <Grid container columns={12} spacing={2}>
-                <Grid item xs={5}>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
                   <Donut
                     data={{
                       "PRESTADORES DE SERVICIO": 192710490,
@@ -146,7 +146,7 @@ const Finanzas = () => {
                     width={450}
                   />
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={6}>
                   <Donut
                     data={{
                       "CONTECON MANZANILLO S.A. DE C.": 887103770,

@@ -106,8 +106,6 @@ const Table = ({ data, columns }) => {
     useGlobalFilter
   );
 
-  console.log(data);
-
   return (
     <>
       <MaUTable {...getTableProps()}>
@@ -118,7 +116,7 @@ const Table = ({ data, columns }) => {
                 <TableCell {...column.getHeaderProps()}>
                   {column.render("Header")}
                   {/* Render the columns filter UI */}
-                  <div>{column.canFilter ? column.render("Filter") : null}</div>
+                  <div>{column.canFilter && column.render("Filter")}</div>
                 </TableCell>
               ))}
             </TableRow>
@@ -143,9 +141,9 @@ const Table = ({ data, columns }) => {
         </TableBody>
         <TableBody key={"totals"}>
           <TableRow key={"here"}>
-            <TableCell>TOTALES</TableCell>
+            <TableCell style={{ fontWeight: "bold" }}>TOTALES</TableCell>
             <TableCell></TableCell>
-            <TableCell>$100,000.00</TableCell>
+            <TableCell style={{ fontWeight: "bold" }}>$286,353,341</TableCell>
           </TableRow>
         </TableBody>
       </MaUTable>

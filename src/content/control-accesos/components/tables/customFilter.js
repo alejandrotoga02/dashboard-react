@@ -20,10 +20,11 @@ const SelectColumnFilter = ({
       onChange={e => {
         setFilter(e.target.value || undefined);
       }}
+      style={{ maxWidth: 150}}
     >
       <option value="">All</option>
       {options.map((option, i) => (
-        <option key={i} value={option}>
+        <option key={i} value={option} >
           {option}
         </option>
       ))}
