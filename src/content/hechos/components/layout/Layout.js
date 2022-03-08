@@ -19,13 +19,10 @@ const Layout = () => {
           </Typography>
 
           <Button component={Link} color="inherit" to="/hechos">
-            General
+            Resumen
           </Button>
-          <Button component={Link} color="inherit" to="/hechos/norte">
-            Norte
-          </Button>
-          <Button component={Link} color="inherit" to="/hechos/sur">
-            Sur
+          <Button component={Link} color="inherit" to="/hechos/detalle">
+            Tabla Detalle
           </Button>
         </Toolbar>
       </AppBar>

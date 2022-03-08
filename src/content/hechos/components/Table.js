@@ -1,4 +1,9 @@
 import React from "react";
+import MaUTable from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 import { makeStyles, Typography } from "@material-ui/core";
 import { useTable } from "react-table";
 import { numberWithCommas } from "../../../common/utils";
@@ -8,63 +13,56 @@ const useStyles = makeStyles(() => ({
     color: "#007fff",
     fontSize: "1.2em",
     fontWeight: "bold"
-  },
-  right: {
-    paddingLeft: "3em",
-    textAlign: "right"
   }
 }));
 
-const Table = ({ columns, data, ...props }) => {
+const Table = ({ columns, data }) => {
   const classes = useStyles();
-  const { getTableProps, getTableBodyProps, rows, prepareRow } = useTable({
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow
+  } = useTable({
     columns,
     data
   });
 
   return (
-    <>
-      <table {...props} {...getTableProps()}>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, _i) => {
-            prepareRow(row);
-            return (
-              <tr align="left" {...row.getRowProps()}>
-                {row.cells.map((cell, index) => {
-                  if (index === 0) {
-                    return (
-                      <td {...cell.getCellProps()}>
-                        <Typography
-                          variant="body1"
-                          color="textPrimary"
-                          component="div"
-                          className={`${classes.td}`}
-                        >
-                          {cell.render(({ value }) => value)}
-                        </Typography>
-                      </td>
-                    );
-                  } else {
-                    return (
-                      <td {...cell.getCellProps()}>
-                        <Typography
-                          variant="body1"
-                          color="textPrimary"
-                          component="div"
-                          className={`${classes.td} ${classes.right}`}
-                        >
-                          {cell.render(({ value }) => numberWithCommas(value))}
-                        </Typography>
-                      </td>
-                    );
-                  }
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </>
+    <MaUTable {...getTableProps()}>
+      <TableHead>
+        {headerGroups.map(headerGroup => (
+          <TableRow {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <TableCell {...column.getHeaderProps()}>
+                {/* {column.render("Header")} */}
+                {/* Render the columns filter UI */}
+                {/* <div>{column.canFilter ? column.render("Filter") : null}</div> */}
+              </TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableHead>
+      <TableBody {...getTableBodyProps()}>
+        {rows.map(row => {
+          prepareRow(row);
+          return (
+            <TableRow {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return (
+                  <TableCell {...cell.getCellProps()} className={classes.td}>
+                    {cell.render(({ value }) => {
+                      return numberWithCommas(value);
+                    })}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </MaUTable>
   );
 };
 

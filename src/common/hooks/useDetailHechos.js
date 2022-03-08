@@ -20,26 +20,26 @@ export const useDetailHechos = data => {
         filter: "includes"
       },
       {
-        Header: "Tamaño",
-        accessor: "Tamanio",
-        Filter: SelectColumnFilter,
-        filter: "includes"
-      },
-      {
         Header: "Lleno_Vacio",
         accessor: "Lleno_Vacio",
         Filter: SelectColumnFilter,
         filter: "includes"
       },
       {
+        Header: "Tamaño",
+        accessor: "Tamanio",
+        Filter: SelectColumnFilter,
+        filter: "includes"
+      },
+      {
         Header: "Cajas",
         accessor: "Cajas",
-        Filter: NoneFilter,
+        Filter: NoneFilter
       },
       {
         Header: "TEUs",
         accessor: "TEUs",
-        Filter: NoneFilter,
+        Filter: NoneFilter
       },
       {
         Header: "Peso",
@@ -58,10 +58,9 @@ export const useDetailHechos = data => {
     setDataExport(originalRows);
   }, []);
 
-
   return {
     columns,
     dataExport,
-    onChange    
+    onChange
   };
 };
