@@ -124,7 +124,6 @@ const Table = ({ data, columns }) => {
         </TableHead>
         <TableBody {...getTableBodyProps()}>
           {rows.map(row => {
-            console.log("row", row);
             prepareRow(row);
             return (
               <TableRow {...row.getRowProps()}>

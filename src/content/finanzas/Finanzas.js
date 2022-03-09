@@ -21,7 +21,10 @@ const Finanzas = () => {
       <Grid container spacing={2}>
         <Grid item xs={5} md={5} lg={5}>
           <Card className={classes.card}>
-            <ContainersSection title="DETALLE DE INGRESOS" variant="h6">
+            <ContainersSection
+              title="RESUMEN DE INGRESOS GLOBALES"
+              variant="h6"
+            >
               <Grid container spacing={0}>
                 <Grid item lg={12}>
                   <DetailTable
@@ -106,20 +109,18 @@ const Finanzas = () => {
                 <Grid item lg={12}>
                   <IngressByMonth
                     data={{
-                      "Ene-21": "171.31M",
-                      "Feb-21": "50.24M",
-                      "Mar-21": "166.46M",
-                      "May-21": "122.84M",
-                      "Jun-21": "166.2M",
-                      "Jul-21": "181.16M",
-                      "Ago-21": "183.44M",
-                      "Sep-21": "180.69M",
-                      "Oct-21": "207.3M",
-                      "Nov-21": "202.63M",
-                      "Dic-21": "208.13M",
-                      "Ene-22": "232.17M",
-                      "Feb-22": "268.48M",
-                      "Mar-22": "120.74M"
+                      Enero: {
+                        2021: "171.31M",
+                        2022: "232.17M"
+                      },
+                      Febrero: {
+                        2021: "50.24M",
+                        2022: "268.48M"
+                      },
+                      Marzo: {
+                        2021: "166.46M",
+                        2022: "120.74M"
+                      }
                     }}
                     serieName="ingresos"
                     text=""

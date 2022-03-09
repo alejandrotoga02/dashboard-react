@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { keys, values } from "ramda";
-import { numberWithCommas } from "../utils";
 
 const initialStruct = {
   series: [

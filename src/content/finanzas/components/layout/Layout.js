@@ -17,7 +17,7 @@ const Layout = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-           Finanzas
+           Estadísticas Financieras (Globales)
           </Typography>
 
           {/* <Button component={Link} color="inherit" to="/hechos">

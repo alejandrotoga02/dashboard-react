@@ -1,24 +1,18 @@
 import ReactApexChart from "react-apexcharts";
-import useBarChart from "../../../common/hooks/useBarChart";
+import useBarChart from "./useBarChart";
 
-const IngressByMonth = ({ data, serieName, text, height = 250 }) => {
-  const state = useBarChart(
-    data,
-    serieName,
-    {
+const IngressByMonth = ({ data, text, height = 250 }) => {
+  const state = useBarChart({
+    data: data,
+    title: {
       text,
       align: "left",
       style: {
         fontSize: "12px"
       }
     },
-    {
+    dataLabels: {
       enabled: true,
-      textAnchor: "middle",
-      style: {
-        fontSize: "9px",
-        colors: ["#333", "#999"]
-      },
       formatter: (_val, opts) => {
         const {
           dataPointIndex,
@@ -28,7 +22,7 @@ const IngressByMonth = ({ data, serieName, text, height = 250 }) => {
         return data[dataPointIndex];
       }
     }
-  );
+  });
 
   return (
     <div id="chart2">
