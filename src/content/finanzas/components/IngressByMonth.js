@@ -13,14 +13,7 @@ const IngressByMonth = ({ data, text, height = 250 }) => {
     },
     dataLabels: {
       enabled: true,
-      formatter: (_val, opts) => {
-        const {
-          dataPointIndex,
-          w: { config }
-        } = opts;
-        const { data } = config.series[0];
-        return data[dataPointIndex];
-      }
+      formatter: val => val + "M"
     }
   });
 

@@ -1,10 +1,15 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
+import MaUTable from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 import { useTable } from "react-table";
 import { numberWithCommas } from "../../../../common/utils";
+import "./Table.scss";
 
-
-const Table = ({ cellClass = "h4", columns, data, ...props }) => {
+const Table = ({ cellClass = "h4", columns, data }) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -19,12 +24,15 @@ const Table = ({ cellClass = "h4", columns, data, ...props }) => {
   // Render the UI for your table
   return (
     <>
-      <table {...props} {...getTableProps()}>
-        <thead>
+      <MaUTable {...getTableProps()}>
+        <TableHead>
           {headerGroups.map(headerGroup => (
-            <tr align="left" {...headerGroup.getHeaderGroupProps()}>
+            <TableRow align="left" {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>
+                <TableCell
+                  {...column.getHeaderProps()}
+                  className="table-no-border"
+                >
                   <Typography
                     variant="caption"
                     color="textSecondary"
@@ -32,19 +40,22 @@ const Table = ({ cellClass = "h4", columns, data, ...props }) => {
                   >
                     {column.render("Header")}
                   </Typography>
-                </th>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, _i) => {
+        </TableHead>
+        <TableBody {...getTableBodyProps()}>
+          {rows.map(row => {
             prepareRow(row);
             return (
-              <tr align="left" {...row.getRowProps()}>
+              <TableRow align="left" {...row.getRowProps()}>
                 {row.cells.map(cell => {
                   return (
-                    <td {...cell.getCellProps()}>
+                    <TableCell
+                      {...cell.getCellProps()}
+                      className="table-no-border"
+                    >
                       <Typography
                         variant={cellClass}
                         color="textPrimary"
@@ -54,14 +65,14 @@ const Table = ({ cellClass = "h4", columns, data, ...props }) => {
                           return numberWithCommas(value);
                         })}
                       </Typography>
-                    </td>
+                    </TableCell>
                   );
                 })}
-              </tr>
+              </TableRow>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+      </MaUTable>
     </>
   );
 };

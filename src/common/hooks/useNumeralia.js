@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import SelectColumnFilter from "../../content/control-accesos/components/tables/customFilter";
+import SelectColumnFilter from "../hooks/filters/customFilter";
 import { exportCSVFile } from "../utils";
 
 export const useNumeralia = data => {

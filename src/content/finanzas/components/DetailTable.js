@@ -6,8 +6,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { useTable, useFilters, useGlobalFilter } from "react-table";
 import * as matchSorter from "match-sorter";
-import SelectColumnFilter from "../../control-accesos/components/tables/customFilter";
-import NoneFilter from "../../control-accesos/components/tables/noneFilter";
+import SelectColumnFilter from "../../../common/hooks/filters/customFilter";
+import NoneFilter from "../../../common/hooks/filters/noneFilter";
 
 const fuzzyTextFilterFn = (rows, id, filterValue) => {
   return matchSorter(rows, filterValue, { keys: [row => row.values[id]] });

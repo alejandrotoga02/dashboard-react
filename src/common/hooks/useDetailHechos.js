@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import SelectColumnFilter from "../../content/control-accesos/components/tables/customFilter";
-import NoneFilter from "../../content/control-accesos/components/tables/noneFilter";
+import SelectColumnFilter from "../hooks/filters/customFilter";
+import NoneFilter from "../hooks/filters/noneFilter";
 
 export const useDetailHechos = data => {
   const [dataExport, setDataExport] = useState(data);

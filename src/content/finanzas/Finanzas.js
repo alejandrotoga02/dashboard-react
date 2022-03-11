@@ -129,6 +129,7 @@ const Finanzas = () => {
               </Grid>
             </ContainersSection>
           </Card>
+          <br />
           <Card className={classes.card}>
             <ContainersSection
               title="DISTRIBUCIÓN DE LOS INGRESOS POR:"
