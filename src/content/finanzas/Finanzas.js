@@ -1,10 +1,12 @@
 import React from "react";
-import { Card, makeStyles } from "@material-ui/core";
-import { Grid } from "@mui/material";
+import { Card, makeStyles, Typography } from "@material-ui/core";
+import { Grid, Stack } from "@mui/material";
 import ContainersSection from "./components/Containers";
 import Donut from "./components/Donut";
 import IngressByMonth from "./components/IngressByMonth";
 import DetailTable from "./components/DetailTable";
+import RangePicker from "../../common/components/RangePicker";
+import useFinanzas from "./useFinanzas";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -15,9 +17,36 @@ const useStyles = makeStyles(() => ({
 
 const Finanzas = () => {
   const classes = useStyles();
+  const { rangeValue, onDateRangeChange } = useFinanzas();
 
   return (
     <>
+      <Grid container spacing={3} style={{ paddingBottom: 40 }}>
+        <Grid item xs={12} md={12} lg={12}>
+          <Stack direction="row" spacing={2} justifyContent={"flex-end"}>
+            <RangePicker
+              startText="Inicio"
+              endText="Fin"
+              value={rangeValue}
+              onChange={onDateRangeChange}
+              // onAccept={onAcceptRange}
+            />
+            {/* {!rangeIsnotSelected() && (
+              <Button variant="outlined" onClick={resetRange}>
+                Limpiar filtro
+              </Button>
+            )} */}
+
+            <Typography
+              variant="caption"
+              component="div"
+              // className={classes.labelSync}
+            >
+              Última actualización: {"07/03/2022 08:00 hrs"}
+            </Typography>
+          </Stack>
+        </Grid>
+      </Grid>
       <Grid container spacing={2}>
         <Grid item xs={5} md={5} lg={5}>
           <Card className={classes.card}>

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getNumeralics } from "../../services/AcessService";
+import { getNumeralics } from "../../services/AccessService";
 
 const initialState = {
   data: [],

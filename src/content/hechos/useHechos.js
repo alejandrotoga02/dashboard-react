@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { isNil } from "ramda";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchDashboard } from "../reducers/dashboardReducer";
+import { fetchDashboard } from "../../common/reducers/dashboardReducer";
 
 export const useHechos = (data, zona) => {
   const [rangeValue, setRangeValue] = useState([null, null]);

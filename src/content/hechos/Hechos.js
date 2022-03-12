@@ -7,7 +7,7 @@ import Donut from "./components/Donut";
 import LineBarChart from "./components/Bar";
 import { Stack } from "@mui/material";
 import RangePicker from "../control-accesos/components/RangePicker";
-import { useHechos } from "../../common/hooks/useHechos";
+import { useHechos } from "./useHechos";
 
 const useStyles = makeStyles(() => ({
   card: {

@@ -1,10 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { forEachObjIndexed, keys, values } from "ramda";
-import { length } from "ramda";
-import { forEach } from "ramda";
-import { find } from "ramda";
-import { propEq } from "ramda";
-import { findIndex } from "ramda";
+import { find, findIndex, forEach, propEq } from "ramda";
 
 const initialStruct = {
   series: [],

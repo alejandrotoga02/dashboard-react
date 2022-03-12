@@ -3,10 +3,10 @@ import { Card, makeStyles, Typography } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import ContainersSection from "./components/Containers";
 import TableFilter from "../control-accesos/components/tables/TableFilter";
-import { useDetailHechos } from "../../common/hooks/useDetailHechos";
 import { Stack } from "@mui/material";
-import RangePicker from "../control-accesos/components/RangePicker";
-import { useHechos } from "../../common/hooks/useHechos";
+import RangePicker from "../../common/components/RangePicker";
+import { useDetailHechos } from "./useDetailHechos";
+import { useHechos } from "./useHechos";
 
 const records = [
   {

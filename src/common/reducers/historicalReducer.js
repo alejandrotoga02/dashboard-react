@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getHistorics } from "../../services/AcessService";
+import { getHistorics } from "../../services/AccessService";
 
 const initialState = {
   data: [],

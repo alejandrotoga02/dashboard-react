@@ -1,5 +1,5 @@
 import ReactApexChart from "react-apexcharts";
-import useBarChart from "./useBarChart";
+import useBarChart from "../useBarChart";
 
 const IngressByMonth = ({ data, text, height = 250 }) => {
   const state = useBarChart({
