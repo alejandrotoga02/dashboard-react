@@ -9,7 +9,7 @@ import {
 import { Layout as LayoutHecho, DetalleHechos, Hechos } from "./content/hechos";
 import General from "./content/frames/General";
 import Historico from "./content/historico/Historico";
-import { Finanzas, Layout as LayoutFinanzas } from "./content/finanzas";
+import { Finanzas, Layout as LayoutFinanzas, DetalleFinanzas } from "./content/finanzas";
 
 const App = () => {
   return (
@@ -34,6 +34,7 @@ const App = () => {
       </Route>
       <Route path="finanzas" element={<LayoutFinanzas />}>
         <Route index element={<Finanzas />} />
+        <Route path="detalle" element={<DetalleFinanzas />} />
       </Route>
       <Route path="frames" element={<Layout />}>
         <Route index element={<General />} />

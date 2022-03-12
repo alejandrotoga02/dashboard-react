@@ -20,7 +20,6 @@ const useStyles = makeStyles(() => ({
 const Finanzas = () => {
   const classes = useStyles();
   const { rangeValue, onDateRangeChange } = useFinanzas();
-  console.log( data)
 
   return (
     <>
@@ -65,8 +64,8 @@ const Finanzas = () => {
                   <DetailTable
                     data={[
                       {
-                        tipo_ingreso: "CESION PARCIA DE DERECHOS",
-                        sub_tipo_ingreso: "CESION PARCIA DE DERECHOS",
+                        tipo_ingreso: "CESION PARCIAL DE DERECHOS",
+                        sub_tipo_ingreso: "CESION PARCIAL DE DERECHOS",
                         total: "$2,030,686,242"
                       },
                       {

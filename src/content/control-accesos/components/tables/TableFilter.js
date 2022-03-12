@@ -79,7 +79,10 @@ const TableFilter = ({ onChange, data, columns }) => {
   }, [onChange, rows]);
 
   return (
-    <MaUTable {...getTableProps()}>
+    <MaUTable {...getTableProps()} style={{
+      display:'block',
+      overflowX: 'auto',
+    }}>
       <TableHead>
         {headerGroups.map(headerGroup => (
           <TableRow {...headerGroup.getHeaderGroupProps()}>

@@ -1,11 +1,9 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
-// eslint-disable-next-line
 import { Link, Outlet } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// eslint-disable-next-line
 import Button from "@mui/material/Button";
 import { useStyles } from "./styles";
 
@@ -17,12 +15,12 @@ const Layout = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-           Estadísticas Financieras (Globales)
+            Estadísticas Financieras (Globales)
           </Typography>
 
-          {/* <Button component={Link} color="inherit" to="/hechos">
-            General
-          </Button> */}
+          <Button component={Link} color="inherit" to="/finanzas/detalle">
+            Tabla Detalle
+          </Button>
         </Toolbar>
       </AppBar>
       <main className={classes.content}>

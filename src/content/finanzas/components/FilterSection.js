@@ -3,7 +3,6 @@ import { Stack } from "@mui/material";
 import Select from "../../../common/components/SelectM";
 
 const FilterSection = ({ tipos, subtipos, conceptos, clientes, meses }) => {
-  console.log( tipos )
   return (
     <Stack direction="row" spacing={1}>
       <Select label="Tipos" value={""} items={tipos} />
