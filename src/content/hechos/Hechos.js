@@ -2,7 +2,7 @@ import React from "react";
 import { Card, makeStyles, Typography } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import Section from "./components/Section";
-import ContainersSection from "./components/Containers";
+import ContainersSection from "../../common/components/Containers";
 import Donut from "./components/Donut";
 import LineBarChart from "./components/Bar";
 import { Stack } from "@mui/material";

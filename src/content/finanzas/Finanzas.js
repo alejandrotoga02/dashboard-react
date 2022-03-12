@@ -1,12 +1,14 @@
 import React from "react";
 import { Card, makeStyles, Typography } from "@material-ui/core";
 import { Grid, Stack } from "@mui/material";
-import ContainersSection from "./components/Containers";
+import ContainersSection from "../../common/components/Containers";
 import Donut from "./components/Donut";
 import IngressByMonth from "./components/IngressByMonth";
 import DetailTable from "./components/DetailTable";
 import RangePicker from "../../common/components/RangePicker";
 import useFinanzas from "./useFinanzas";
+import FilterSection from "./components/FilterSection";
+import data from "./mocks/filters";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -18,12 +20,16 @@ const useStyles = makeStyles(() => ({
 const Finanzas = () => {
   const classes = useStyles();
   const { rangeValue, onDateRangeChange } = useFinanzas();
+  console.log( data)
 
   return (
     <>
       <Grid container spacing={3} style={{ paddingBottom: 40 }}>
-        <Grid item xs={12} md={12} lg={12}>
-          <Stack direction="row" spacing={2} justifyContent={"flex-end"}>
+        <Grid item xs={5} md={5} lg={5}>
+          <FilterSection tipos={data.tipos} subtipos={data.subtipos} meses={data.meses} clientes={data.clientes} />
+        </Grid>
+        <Grid item xs={7} md={7} lg={7}>
+          <Stack direction="row" spacing={0} justifyContent={"flex-end"}>
             <RangePicker
               startText="Inicio"
               endText="Fin"

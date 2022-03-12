@@ -14,7 +14,7 @@ const RangePicker = ({ ...props }) => {
         renderInput={(startProps, endProps) => (
           <>
             <TextField type="date" {...startProps} />
-            <Box sx={{ mx: 2 }}> a </Box>
+            <Box sx={{ mx: 1 }}> a </Box>
             <TextField type="date" {...endProps} />
           </>
         )}

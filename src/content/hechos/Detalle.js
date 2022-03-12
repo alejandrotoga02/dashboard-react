@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, makeStyles, Typography } from "@material-ui/core";
 import { Grid } from "@mui/material";
-import ContainersSection from "./components/Containers";
+import ContainersSection from "../../common/components/Containers";
+import RangePicker from "../../common/components/RangePicker";
 import TableFilter from "../control-accesos/components/tables/TableFilter";
 import { Stack } from "@mui/material";
-import RangePicker from "../../common/components/RangePicker";
 import { useDetailHechos } from "./useDetailHechos";
 import { useHechos } from "./useHechos";
 
