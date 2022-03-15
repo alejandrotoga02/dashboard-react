@@ -61,10 +61,7 @@ const Hechos = () => {
       <Grid container spacing={1} style={{ paddingBottom: 40 }}>
         <Grid item xs={12} md={12} lg={12}>
           <Card className={classes.card}>
-            <ContainersSection
-              title="Tabla detalle de contenedores"
-              variant="h6"
-            >
+            <ContainersSection title="Tabla detalle de ingresos" variant="h6">
               <Grid container spacing={0}>
                 <Grid item lg={12}>
                   <TableFilter

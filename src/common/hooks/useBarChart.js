@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { keys, values } from "ramda";
+import { numberWithCommas } from "../utils";
 
 const initialStruct = {
   series: [
@@ -25,6 +26,10 @@ const initialStruct = {
         }
       }
     },
+    dataLabels: {
+      enabled: true,
+      formatter: val => numberWithCommas(val)
+    },
     title: {},
     stroke: {
       width: 2
@@ -45,6 +50,11 @@ const initialStruct = {
       title: {
         text: ""
       }
+    },
+    tooltip: {
+      y: {
+        formatter: val => numberWithCommas(val)
+      }
     }
   }
 };
@@ -53,7 +63,6 @@ const useBarChart = (
   accumulated,
   serieName = "",
   titleProps,
-  dataLabels = {},
   customEvents = {}
 ) => {
   const [struct, setStruct] = useState(initialStruct);
@@ -75,7 +84,6 @@ const useBarChart = (
           events: customEvents
         },
         title: titleProps,
-        dataLabels: dataLabels,
         xaxis: {
           ...state.options.xaxis,
           categories: keys(accumulated)

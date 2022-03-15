@@ -18,6 +18,9 @@ const Layout = () => {
             Estadísticas Financieras (Globales)
           </Typography>
 
+          <Button component={Link} color="inherit" to="/finanzas">
+            General
+          </Button>
           <Button component={Link} color="inherit" to="/finanzas/detalle">
             Tabla Detalle
           </Button>

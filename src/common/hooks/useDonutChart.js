@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { keys, values } from "ramda";
+import { numberWithCommas } from "../utils";
 
 const initialStruct = {
   series: [],
@@ -23,7 +24,12 @@ const initialStruct = {
           }
         }
       }
-    ]
+    ],
+    tooltip: {
+      y: {
+        formatter: val => numberWithCommas(val)
+      }
+    }
   }
 };
 
