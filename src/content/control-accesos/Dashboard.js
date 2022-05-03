@@ -50,10 +50,7 @@ const Dashboard = () => {
     onAcceptRange
   } = useDashboard(entities, "all");
 
-  useEffect(
-    () => dispatch(fetchDashboard()),
-    [dispatch]
-  );
+  useEffect(() => dispatch(fetchDashboard()), [dispatch]);
 
   return (
     !dashboardLoading && (
